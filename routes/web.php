@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminNavController;
 use App\Http\Controllers\AdminRequestController;
 use App\Http\Controllers\HukukBasvuruController;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,9 @@ Route::post('/upload-audio',[HukukBasvuruController::class,'uploadAudio']);
 Route::post('/upload-video',[HukukBasvuruController::class,'uploadVideo']);
 
 
+
+
+
 Route::get('/giriş-yap',function(){
     return view("login");
 })->name('login');
@@ -57,6 +61,10 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/download/{filename}',[AdminRequestController::class,'download'])->name('download');
 
+    //admin menuitem
+    Route::get('/admin/aktif_basvurular', [AdminNavController::class, 'active_requests'])->name('active_requests');
+
+  
 
 
     Route::get('/demo',[HukukBasvuruController::class,'basvuru']);
@@ -69,6 +77,10 @@ Route::middleware(['auth'])->group(function(){
 
     // Soru tipini gönderme
     Route::post('/sendRequestTypes',[HukukBasvuruController::class,'sendTypes']);
+
+    // Geri Dönüş Tipini Gönderme
+
+    Route::post('/set-feedback-method',[HukukBasvuruController::class,'setFeedBackMethod']);
 
 
 

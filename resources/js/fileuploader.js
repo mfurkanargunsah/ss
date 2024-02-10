@@ -8,7 +8,18 @@
     var mediaRecorder;
     var chunks = [];
     var startTime;
-    var selectedMethod;
+    var selectedAMethod;
+
+
+    function openModal() {
+       
+        document.getElementById('loadingModal').classList.remove('hidden');       
+       }
+       
+       function closeModal() {
+                  // Hata durumunda da modalı gizle
+                  document.getElementById('loadingModal').classList.add('hidden');
+       }
 
     function clearChunks() {
         // chunks dizisini temizle
@@ -18,7 +29,7 @@
     startRecordingBtn.addEventListener('click', function () {
         // Eski kaydı temizle
         clearChunks();
-        selectedMethod = 'record';
+        selectedAMethod = 'record';
 
         // Kayıt başlatılıyor
         navigator.mediaDevices.getUserMedia({ audio: true })
@@ -86,9 +97,17 @@
     var fileInput = document.getElementById('audio_input');
 fileInput.addEventListener('change', function () {
     clearChunks();
-    selectedMethod = 'file';
+    selectedAMethod = 'file';
  
 });
+
+  // Dosyayı inputdan al (video)
+  var vfileInput = document.getElementById('video_input');
+  vfileInput.addEventListener('change', function () {
+      clearChunks();
+      selectedVMethod = 'vfile';
+   
+  });
 
     // Zamanı biçimlendirme fonksiyonu
     function formatTime(seconds) {
@@ -111,7 +130,7 @@ fileInput.addEventListener('change', function () {
     var mediaVRecorder;
     var mediaVStream;
     var recordedChunks = [];
-    var selectedMethod;
+    var selectedVMethod;
 
     function clearVChunks() {
         // chunks dizisini temizle
@@ -128,7 +147,7 @@ fileInput.addEventListener('change', function () {
                     mediaVStream = stream;
                     videoPlayer.srcObject = stream;
                  
-                    selectedMethod = 'vrecord';
+                    selectedVMethod = 'vrecord';
 
                     mediaVRecorder = new MediaRecorder(stream);
                  
@@ -173,96 +192,126 @@ fileInput.addEventListener('change', function () {
 
         
 
-
-
-
-
-
-
-    //upload files (image/pdf)
-
-document.getElementById("sendAllFiles").onclick = async () => {
-    const formData = new FormData();
-    const files = Object.values(FILES);
-
-
-//Dosyaları Al
-    files.forEach(file => {
-        formData.append("files[]", file);
-    });
-
-    formData.append("textarea", document.getElementById("textarea").value);
-
-    const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
-
-
-    try {
-        const response = await fetch('/uploadFiles', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                    'X-CSRF-TOKEN': csrfToken,
-                },
-        });
+// Dosya yükleme işlemi
+async function uploadFiles(formData) {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
         
-        if (response.ok) {
-            selectReturn();
-            console.log(response.json());
+           // İlerleme durumu izleyicisi
+        xhr.upload.addEventListener("progress", (event) => {
+            const progressBar = document.getElementById("progressBar");
+            const log = document.getElementById("progressText");
 
-        } else {
-            alert('Dosyalar yüklenirken bir hata oluştu.');
-        }
+            if (event.lengthComputable) {
+                progressBar.value = event.loaded; // İlerleme çubuğunu güncelle
+                log.textContent = `Yükleniyor (${((event.loaded / event.total) * 100).toFixed(2)}%)…`; // İlerleme mesajını güncelle
+            }
+            else{
+                console.warn("İlerleme durumu hesaplanamıyor.");
+            }
+        });
+
+        const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+        
+
+        xhr.open("POST", "/uploadFiles");
+        xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken);
+        xhr.send(formData);
+        xhr.onload = () => {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                resolve(xhr.responseText);
+            } else {
+                reject(xhr.statusText);
+            }
+        };
+        xhr.onerror = () => reject(xhr.statusText);
+    });
+}
+
+
+
+
+
+   // Dosyaları yükleme işlemi
+document.getElementById("sendAllFiles").onclick = async () => {
+    openModal();
+    try {
+        await Promise.all([sendToController(), sendToVController()]);
+
+        const formData = new FormData();
+        const files = Object.values(FILES);
+
+        // Dosyaları FormData'ya ekle
+        files.forEach(file => {
+            formData.append("files[]", file);
+        });
+        formData.append("textarea", document.getElementById("textarea").value);
+
+   
+
+        // Dosyaları yükleme işlemi
+  
+            const response = await uploadFiles(formData);
+        closeModal();
+        selectReturn();
+        console.log(response); 
     } catch (error) {
         console.error('Hata:', error);
+        closeModal();
     }
 };
 //end
 
 
+
  // Video kaydı ya da dosyasını controller'a gönder
- function sendToVController() {
-    if (selectedMethod === 'vrecord') {
+ async function sendToVController() {
+
+    
+    if (selectedVMethod === 'vrecord') {
         var blob = new Blob(recordedChunks, { type: 'video/webm' });
         var videoData = new FormData();
         videoData.append('video', blob, 'recorded_video.webm');
         const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
 
-        fetch('/upload-video', {
-            method: 'POST',
-            body: videoData,
-            headers: {
-                'X-CSRF-TOKEN': csrfToken,
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
+        try {
+            const response = await fetch('/upload-video', {
+                method: 'POST',
+                body: videoData,
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken,
+                },
+            });
+            const data = await response.json();
             console.log('Success:', data);
-        })
-        .catch((error) => {
+      
+        } catch (error) {
             console.error('Error:', error);
-        });
-    } else if (selectedMethod === 'vfile') {
+          
+        }
+    } else if (selectedVMethod === 'vfile') {
         // Dosya seçilmişse, fileInput elementini kullanarak dosyayı gönder
         var fileInput = document.getElementById('video_input'); 
         var file = fileInput.files[0];
         var videoData = new FormData();
-        videoData.append('video', file);
+        videoData.append('video', file,file.name);
         const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
 
-        fetch('/upload-video', {
-            method: 'POST',
-            body: videoData,
-            headers: {
-                'X-CSRF-TOKEN': csrfToken,
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
+        try {
+            const response = await fetch('/upload-video', {
+                method: 'POST',
+                body: videoData,
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken,
+                },
+            });
+            const data = await response.json();
             console.log('Success:', data);
-        })
-        .catch((error) => {
+      
+        } catch (error) {
             console.error('Error:', error);
-        });
+        
+        }
     }
 }
 
@@ -271,64 +320,55 @@ document.getElementById("sendAllFiles").onclick = async () => {
 
 
 // Ses kaydı ya da dosyasını controller'a gönder
-function sendToController() {
-    if (selectedMethod === 'record') {
-    // Kayıt yöntemi seçilmişse, chunks dizisini kullanarak ses kaydını gönder
-    var blob = new Blob(chunks, { type: 'audio/wav' });
-    var audioData = new FormData();
-    audioData.append('audio', blob, 'recorded_audio.wav');
-    const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+async function sendToController() {
+    if (selectedAMethod === 'record') {
+        // Kayıt yöntemi seçilmişse, chunks dizisini kullanarak ses kaydını gönder
+        var blob = new Blob(chunks, { type: 'audio/wav' });
+        var audioData = new FormData();
+        audioData.append('audio', blob, 'recorded_audio.wav');
+        const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
 
-    fetch('/upload-audio', {
-        method: 'POST',
-        body: audioData,
-        headers: {
-            'X-CSRF-TOKEN': csrfToken,
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-    } else if (selectedMethod === 'file') {
-    // Dosya seçilmişse, fileInput elementini kullanarak dosyayı gönder
-    var fileInput = document.getElementById('audio_input');
-    var file = fileInput.files[0];
-    var audioData = new FormData();
-    audioData.append('audio', file);
-    const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
-
-
-    fetch('/upload-audio', {
-        method: 'POST',
-        body: audioData,
-        headers: {
-            'X-CSRF-TOKEN': csrfToken,
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-    }
-    }
-    
-
-        // File upload button clicked
-        var sendAllFilesButton = document.getElementById('sendAllFiles');
-
-        if (sendAllFilesButton) {
-            sendAllFilesButton.addEventListener('click', function () {
-                sendToController();
-                sendToVController()
+        try {
+            const response = await fetch('/upload-audio', {
+                method: 'POST',
+                body: audioData,
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken,
+                },
             });
+            const data = await response.json();
+            console.log('Success:', data);
+      
+        } catch (error) {
+            console.error('Error:', error);
+         
         }
+    } else if (selectedAMethod === 'file') {
+        // Dosya seçilmişse, fileInput elementini kullanarak dosyayı gönder
+        var fileInput = document.getElementById('audio_input');
+        var file = fileInput.files[0];
+        var audioData = new FormData();
+        audioData.append('audio', file);
+        const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+
+        try {
+            const response = await fetch('/upload-audio', {
+                method: 'POST',
+                body: audioData,
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken,
+                },
+            });
+            const data = await response.json();
+            console.log('Success:', data);
+      
+        } catch (error) {
+            console.error('Error:', error);
+           
+        }
+    }
+}
+
     
     
     // Dosya Yükleme Kısmındaki İleri Butonu

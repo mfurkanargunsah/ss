@@ -96,7 +96,7 @@
 
                       
                     
-                        <button type="button" id="nextFromCompany" onclick="dataForm()" class="inline-flex items-center px-9 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 hover:bg-primary-800" disabled>
+                        <button type="button" id="nextFromCompany" onclick="dataForm()" class="inline-flex items-center px-9 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 hover:bg-primary-800">
                             İleri
                         </button>
                         
@@ -657,18 +657,39 @@ color: #2b6cb0;
 </style>
                 
                 </div>
-                
+                <div id="loadingModal" class="modal hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+                    <div class="bg-white p-5 rounded-lg">
+               
+<div role="status">
+    <p id="progressText">Lütfen bekleyin...</p>
+    <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+    </svg>
+    <span class="sr-only">Dosyalarınız Yükleniyor...</span>
+</div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-lg hidden">
+                        <p id="progressText">Dosyalarınız yükleniyor. Lütfen bekleyin.</p>
+        <progress id="progressBar" value="10" max="100"></progress>
+                    </div>
+                  </div>
 
 
 
 
 
                 <div id="audio-input" class="sm:col-span-2 hidden mb-6 ">
+                  
+                      
 
                     <div class="text-center">
                 
                         <h2 class="text-xl font-bold mb-4 mt-10">Lütfen hangi yöntem ile ses yüklemek istediğinizi seçiniz.</h2>
-                
+                       
+                          
+                        
                         <div class="flex justify-center space-x-4 mt-3">
                             <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
                                 <input checked id="audio-radio-1" type="radio" value="" name="audio-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -765,7 +786,7 @@ color: #2b6cb0;
             <ul class="max-w-screen-lg mx-auto grid w-full gap-6 md:grid-cols-3">
             
     <li>
-        <input type="checkbox" id="react-option" value="" class="hidden peer" required="">
+        <input type="checkbox" id="react-option" value="text" class="hidden peer" required="">
         <label for="react-option" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
             <div class="block">
               <div class="w-full text-lg font-semibold">Yazılı Olarak</div>
@@ -779,7 +800,7 @@ color: #2b6cb0;
         </label>
     </li>
     <li>
-        <input type="checkbox" id="flowbite-option" value="" class="hidden peer">
+        <input type="checkbox" id="flowbite-option" value="voiced" class="hidden peer">
         <label for="flowbite-option" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
             <div class="block">
                  <div class="w-full text-lg font-semibold">Sözlü/Sesli Olarak</div>
@@ -788,7 +809,7 @@ color: #2b6cb0;
         </label>
     </li>
     <li>
-        <input type="checkbox" id="angular-option" value="" class="hidden peer">
+        <input type="checkbox" id="angular-option" value="video" class="hidden peer">
         <label for="angular-option" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
             <div class="block">
                <div class="w-full text-lg font-semibold">Görüntülü Olarak</div>
@@ -1085,12 +1106,37 @@ function goToPayment(){
     step5.classList.add('hidden');
     step6.classList.remove('hidden'); */
 
-    window.alert("Ödeme başarılı! Ana sayfaya yönlendiriliyorsunuz...");
+    var selectedOptions = [];
 
+    
+      document.querySelectorAll('input[type="checkbox"]:checked').forEach(function(checkbox) {
+        // Checkbox'un değerini alın
+        var value = checkbox.value.trim();
+        // Seçili seçeneği seçiliOptions dizisine ekleyin
+        selectedOptions.push(value);
+    });
 
-setTimeout(function() {
-    window.location.href = "/admin"; 
-}, 2000); // 2 saniye
+    var csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+
+    $.ajax({
+    type: 'POST',
+    url: '/set-feedback-method',
+    data: { 
+        type: selectedOptions,
+        _token: csrfToken  
+    },
+    success: function(response) {
+       
+        console.log(response);
+       // setTimeout(function() {
+   // window.location.href = "/admin"; 
+//}, 2000); // 2 saniye
+    },
+    error: function(error) {
+       
+        console.error(error);
+    }
+});
 
 }
 

@@ -45,7 +45,7 @@ class AdminRequestController extends Controller
                     $fileGroups['document'][] = $file;
                     break;
                 default:
-                    // Bilinmeyen türde dosya varsa burada işlem yapılabilir
+                  
                     break;
             }
 
@@ -68,16 +68,16 @@ class AdminRequestController extends Controller
         }
         
         if($file->filetype === "Video"){
-        $path = "files/users/user{$file->author}/videos/{$file->doc_uuid}/";
+            $path = "files/users/user{$file->author}/videos/{$file->doc_uuid}/$filename";
         }
-        if($file->filetype === "Audio"){
-            $path = "files/users/user{$file->author}/audios/{$file->doc_uuid}/";
+        elseif($file->filetype === "Audio"){
+            $path = "files/users/user{$file->author}/audios/{$file->doc_uuid}/$filename";
             }
            else{
-                $path = "files/users/user{$file->author}/documents/{$file->doc_uuid}/";
+                $path = "files/users/user{$file->author}/documents/{$file->doc_uuid}/$filename";
                 }    
     
-        return Storage::disk('s3')->response($path . $filename);
+        return Storage::disk('s3')->response($path);
     }
     
 

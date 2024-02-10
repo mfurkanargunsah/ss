@@ -73,16 +73,41 @@ class HukukBasvuruController extends Controller
         
         return response()->json(['success' => true]);
     }
+
+    public function setFeedBackMethod(Request $request) {
+        $basvuru = Requests::where('creator_uuid', auth::user()->uuid)->latest()->first();
+    
+        if ($basvuru) { 
+            if ($request->has('type')) {
+                $types = $request->input('type');
+                foreach ($types as $type) {
+                    if ($type === 'text') { 
+                        $basvuru->is_return_written = true;
+                    } elseif ($type === 'voiced') {
+                        $basvuru->is_return_called = true;
+                    } elseif ($type === 'video') {
+                        $basvuru->is_return_video = true;
+                    }
+                }
+    
+                $basvuru->save();
+            }
+            return response()->json(['success' => true]);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Başvuru bulunamadı.']);
+        }
+    }
     
 
     public function uploadFile(Request $request){
     
         $request->validate([
-            'textarea' => 'required',
             'files.*' => 'mimes:jpg,png,pdf,doc,docx|max:2048',
         ]);
 
-        $files = $request->file('files');
+ 
+        $files = $request->file('files') ?? [];
+
         //Dosya Başına Ücret, Orn: 5 * 10TL = 50TL
       
 
@@ -90,11 +115,12 @@ class HukukBasvuruController extends Controller
         $docID = $basvuru->id;
 
         $oldPrice = $basvuru->price;
+        if($files){
         $totalAmount = count($files) * 10;
         $newPrice = $oldPrice + $totalAmount;
-
-        $basvuru->question = $request->input('textarea');
         $basvuru->price = $newPrice;
+        }
+        $basvuru->question = $request->input('textarea');
         $basvuru->save();
 
         foreach($files as $file){
@@ -125,7 +151,7 @@ class HukukBasvuruController extends Controller
           
         }
 
-        return response()->json(['message'=>'Dosyalar Başarıyla Yüklendi']);
+        return response()->json(['success' => true, 'message' => 'Dosyalar başarıyla yüklendi']);
 
     }
 
@@ -158,30 +184,33 @@ class HukukBasvuruController extends Controller
     
 
         public function uploadVideo(Request $request){
-
             $basvuru = Requests::where('creator_uuid',auth::user()->uuid)->latest()->first();
             $docID = $basvuru->id;
-    
+        
             if($request->hasFile('video')){
                 $userID = auth::user()->uuid;
                 $videoFile = $request->file('video');
-    
+                $extension = $videoFile->getClientOriginalExtension();
+                $fileName = "video_" . uniqid() . "." . $extension; // Benzersiz bir dosya adı oluştur
+        
+                $path = $videoFile->storeAs("files/users/user{$userID}/videos/{$docID}", $fileName, 's3');
+
                
                 $images = new Image();
-    
-                $path = $videoFile->store("files/users/user{$userID}/videos/{$docID}",'s3');          
                 $images->author = auth::user()->uuid;
                 $images->doc_uuid = $basvuru->id;
-                $images->filename = basename($path);
+                $images->filename = $fileName;
                 $images->filetype = "Video";
                 $images->url = Storage::disk('s3')->url($path);
                 $images->save();
-    
-                return response()->json(['message' => 'Video uploaded successfully']);
+        
+                return response()->json(['success' => true, 'message' => 'Dosya başarıyla yüklendi']);
             } else {
                 return response()->json(['error' => 'No video file provided'], 400);
             }
-            }
+        }
+        
+        
 
 
     public function show(Image $image){
