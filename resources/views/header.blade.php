@@ -8,7 +8,7 @@
       
       <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <div class="w-20 h-20 bg-cover bg-center  overflow-hidden">
-          <img src="{{ url('storage/images/ss_logo.png') }}" alt="Schloss Schaumburg Logo" class="w-full h-full object-cover" />
+          <img src="{{ url('storage/images/ss_logo.png') }}" alt="Schloss Schaumburg Logo"  class="w-full h-full object-cover" />
         </div>
           <span class="self-center text-2xl font-semibold whitespace-nowrap">Schloss Schaumburg</span>
       </a>

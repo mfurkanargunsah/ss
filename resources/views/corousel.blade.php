@@ -4,7 +4,7 @@
     <div class="relative h-56 overflow-hidden  md:h-96">
          <!-- Item 1 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-            <img src="{{ url('storage/images/ss_image_2.jpeg') }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="{{ url('storage/images/ss_image_1.jpg') }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             
         </div>
         <!-- Item 2 -->

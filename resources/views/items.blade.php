@@ -41,11 +41,20 @@
             <br>
 
             <!-- Modal Footer -->
-            <div class="flex justify-end mt-4">
-                <button class="bg-green-500 text-white px-4 py-2 ml-2 rounded">  <a href="/demo">DANIŞMAK İSTİYORUM</a></button>
-                <button id="closeModal" class="bg-red-500 text-white px-4 py-2 ml-2 rounded">DANIŞMAKTAN VAZGEÇTİM</button>
-                <button class="bg-blue-500 text-white px-4 py-2 ml-2 rounded">ABONE OLMAK İSTİYORUM</button>
-            </div>
+            <div class="mt-4">
+                <ul class="flex flex-col md:flex-row justify-end">
+                  <li class="mb-2 md:mb-0">
+                    <button class="bg-green-500 text-white px-4 py-2 rounded"><a href="/demo">DANIŞMAK İSTİYORUM</a></button>
+                  </li>
+                  <li class="mb-2 md:mb-0">
+                    <button id="closeModal" class="bg-red-500 text-white px-4 py-2 rounded">DANIŞMAKTAN VAZGEÇTİM</button>
+                  </li>
+                  <li>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded">ABONE OLMAK İSTİYORUM</button>
+                  </li>
+                </ul>
+              </div>
+              
         </div>
     </div>
 </div>
@@ -85,7 +94,7 @@
  <!-- subs end -->
 
 <div class="container mx-auto min-h-screen flex justify-center items-center">
-    <div class="grid grid-cols-2 gap-4">
+    <div class="grid md:grid-cols-2 gap-4">
  
       <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow relative">
         <img class="rounded-t-lg" src="https://www.eventsimschloss.de/templates/yootheme/cache/b9/schloss-innenhof-01-klein-b9c9b607.jpeg" alt="" />

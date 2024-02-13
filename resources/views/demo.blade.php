@@ -1128,9 +1128,9 @@ function goToPayment(){
     success: function(response) {
        
         console.log(response);
-       // setTimeout(function() {
-   // window.location.href = "/admin"; 
-//}, 2000); // 2 saniye
+        setTimeout(function() {
+    window.location.href = "/admin"; 
+}, 2000); // 2 saniye
     },
     error: function(error) {
        
