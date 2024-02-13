@@ -26,7 +26,7 @@
 -->
 
 
-<section class="bg-white mt-8">
+<section class="bg-white mt-20">
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
         <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl ">KAYIT OL</h1>
 
@@ -41,11 +41,11 @@
     <div class="grid gap-6 mb-6 md:grid-cols-2">
         <div>
             <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Ad</label>
-            <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Name" required>
+            <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Adınız" required>
         </div>
         <div>
             <label for="surname" class="block mb-2 text-sm font-medium text-gray-900">Soyad</label>
-            <input type="text" id="last_name" name="surname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Surname" required>
+            <input type="text" id="last_name" name="surname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Soyadınız" required>
         </div>
       
         <div>
@@ -55,72 +55,45 @@
           
                 <!-- Input Section -->
                 <div class="flex items-center">
+                    <select id="area" name="area" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
+                        <option value="+90" selected>
+            
+                            <span class="inline-flex items-center">
                     
-                    <button id="dropdown-phone-button" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button" onclick="toggleDropdown()">
-                        <!-- Dropdown button content here -->
-                        <svg class="h-4 w-4 me-2" fill="none" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Dropdown button SVG content here -->
-                            <path fill="#E30A17" d="M0 0h1200v800H0z"/>
-                            <circle cx="425" cy="400" r="200" fill="#fff"/>
-                            <circle cx="475" cy="400" r="160" fill="#e30a17"/>
-                            <path fill="#fff" d="M583.334 400l180.901 58.779-111.804-153.885v190.212l111.804-153.885z"/>
-                        </svg> +90 <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <!-- Dropdown button arrow SVG content here -->
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                        </svg>
-                    </button>
+                                +90
+                            </span>
+                        </option>
+                        <option value="+49">
+                            <span class="inline-flex items-center">
+                                <svg fill="none" aria-hidden="true" class="h-4 w-4 me-2" viewBox="0 0 20 15">
+                                    <!-- SVG içeriği buraya gelecek -->
+                                </svg>
+                                +49
+                            </span>
+                        </option>
+                    </select>
+                  
 
                     <input type="text" id="phone-input" name="phone" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-0 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="1234567890" required>
         
                 </div>
-        
-                <!-- Dropdown Section -->
-                <div id="dropdown-phone" class="absolute left-0 top-full z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-52 mt-1">
-                    <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdown-phone-button">
-                        <!-- Dropdown content here -->
-                        <li>
-                            <button type="button" class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 " role="menuitem">
-                                <!-- Dropdown item content here -->
-                                <div class="inline-flex items-center">
-                                    <svg class="h-4 w-4 me-2" fill="none" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-                                        <!-- Dropdown item SVG content here -->
-                                        <path fill="#E30A17" d="M0 0h1200v800H0z"/>
-                                        <circle cx="425" cy="400" r="200" fill="#fff"/>
-                                        <circle cx="475" cy="400" r="160" fill="#e30a17"/>
-                                        <path fill="#fff" d="M583.334 400l180.901 58.779-111.804-153.885v190.212l111.804-153.885z"/>
-                                    </svg> Türkiye (+90)
-                                </div>
-                            </button>
-                        </li>
-                        <li>
-                            <button type="button" class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
-                                <!-- Dropdown item content here -->
-                                <div class="inline-flex items-center">
-                                    <svg class="w-4 h-4 me-2" fill="none" viewBox="0 0 20 15">
-                                        <!-- Dropdown item SVG content here -->
-                                        <rect width="19.6" height="14" y=".5" fill="#fff" rx="2"/><mask id="a" style="mask-type:luminance" width="20" height="15" x="0" y="0" maskUnits="userSpaceOnUse"><rect width="19.6" height="14" y=".5" fill="#fff" rx="2"/></mask><g mask="url(#a)"><path fill="#262626" fill-rule="evenodd" d="M0 5.167h19.6V.5H0v4.667z" clip-rule="evenodd"/><g filter="url(#filter0_d_374_135180)"><path fill="#F01515" fill-rule="evenodd" d="M0 9.833h19.6V5.167H0v4.666z" clip-rule="evenodd"/></g><g filter="url(#filter1_d_374_135180)"><path fill="#FFD521" fill-rule="evenodd" d="M0 14.5h19.6V9.833H0V14.5z" clip-rule="evenodd"/></g></g><defs><filter id="filter0_d_374_135180" width="19.6" height="4.667" x="0" y="5.167" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/><feOffset/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0"/><feBlend in2="BackgroundImageFix" result="effect1_dropShadow_374_135180"/><feBlend in="SourceGraphic" in2="effect1_dropShadow_374_135180" result="shape"/></filter><filter id="filter1_d_374_135180" width="19.6" height="4.667" x="0" y="9.833" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/><feOffset/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0"/><feBlend in2="BackgroundImageFix" result="effect1_dropShadow_374_135180"/><feBlend in="SourceGraphic" in2="effect1_dropShadow_374_135180" result="shape"/></filter></defs></svg>
-                                    Germany (+49)
-                                </div>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
+    
             </div>
         </div>
 
 
          <div>
             <label for="country_id" class="block mb-2 text-sm font-medium text-gray-900">Kimlik No</label>
-            <input type="text" id="country_id" name="country_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Country ID" required>
+            <input type="text" id="country_id" name="country_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="TCK" required>
         </div>
 
         <div>
             <label for="country" class="block mb-2 text-sm font-medium text-gray-900">Ülke</label>
-            <input type="text" id="country" name="country" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Country" required>
+            <input type="text" id="country" name="country" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Ülke" required>
         </div>
         <div>
             <label for="city" class="block mb-2 text-sm font-medium text-gray-900">Şehir</label>
-            <input type="text" id="city" name="city" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="City / State" required>
+            <input type="text" id="city" name="city" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Şehir / Eyalet" required>
         </div>
 
         
@@ -128,7 +101,7 @@
     </div>
     <div class="mb-6">
         <label for="adress" class="block mb-2 text-sm font-medium text-gray-900 ">Adres</label>
-        <input type="text" id="adress" name="adress" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Adress" required>
+        <input type="text" id="adress" name="adress" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Adres" required>
     </div>
 
     
@@ -149,11 +122,48 @@
         <span class="font-medium">Hata!</span> Lütfen girdiğiniz bilgilerinizi kontrol edin.
       </div>
       @endif
+
+
+  
+  <!-- Main modal -->
+  <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+      <div class="relative p-4 w-full max-w-2xl max-h-full">
+          <!-- Modal content -->
+          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              <!-- Modal header -->
+              <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                      Şartlar ve Koşullar
+                  </h3>
+                  <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                      <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                      </svg>
+                      <span class="sr-only">Close modal</span>
+                  </button>
+              </div>
+              <!-- Modal body -->
+              <div class="p-4 md:p-5 space-y-4">
+                  <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non ipsum quis nibh ornare lobortis. Aenean nec turpis et orci lacinia suscipit. Quisque tempor, urna in euismod elementum, purus diam rhoncus lacus, eget fermentum erat ipsum non nulla. Nunc faucibus magna vel ligula semper, at varius elit mattis. Etiam condimentum, velit eget convallis porttitor, tortor mi lacinia augue, sed faucibus libero quam a purus. Etiam accumsan ante nibh, sit amet tempus odio ultrices mattis. Maecenas tempor dui in orci pellentesque rhoncus. Fusce at convallis sapien. Nulla nibh augue, volutpat eget massa in, fermentum vestibulum sapien. Phasellus fringilla auctor rutrum. Curabitur lacus nulla, iaculis vitae elementum id, eleifend volutpat lectus. Proin at molestie quam.
+                  </p>
+                  <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                    Vivamus velit lacus, ultrices eu lectus ac, porttitor lacinia neque. Sed a sodales mauris, eget lobortis lorem. Maecenas eu viverra augue. Integer convallis ligula et massa laoreet condimentum. Sed volutpat semper quam. Suspendisse ac blandit dolor. Morbi malesuada molestie odio, facilisis semper nibh. Fusce viverra finibus ante quis interdum. Curabitur dui nunc, ornare in mauris in, sodales tempor ligula. Proin nec mauris id mi dictum egestas. Vivamus sit amet maximus lorem. Interdum et malesuada fames ac ante ipsum primis in faucibus. </p>
+              </div>
+              <!-- Modal footer -->
+              <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                  <button data-modal-hide="default-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kapat</button>
+                 
+              </div>
+          </div>
+      </div>
+  </div>
+  
     <div class="flex items-start mb-6">
         <div class="flex items-center h-5">
         <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required>
         </div>
-        <label for="remember" class="ms-2 text-sm font-medium text-gray-900"><a href="#" class="text-blue-600 hover:underline">Kullanım Şartları ve Koşulları</a> kabul ediyorum.</label>
+        <label for="remember" class="ms-2 text-sm font-medium text-gray-900"><button type="button" class="text-blue-600 hover:underline" data-modal-target="default-modal" data-modal-toggle="default-modal">Kullanım Şartları ve Koşulları</button> kabul ediyorum.</label>
     </div>
     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Kaydol</button>
 </form>
@@ -200,4 +210,3 @@ function selectOption(option) {
     @include('footer')
 </body>
 </html>
-

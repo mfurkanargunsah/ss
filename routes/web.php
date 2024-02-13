@@ -3,8 +3,11 @@
 use App\Http\Controllers\AdminNavController;
 use App\Http\Controllers\AdminRequestController;
 use App\Http\Controllers\HukukBasvuruController;
+use App\Http\Middleware\SetPreferredLanguage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use Illuminate\Http\Request;
+use App\Http\Controllers\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,17 +20,43 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/change-language', [LanguageController::class, 'changeLanguage'])->name('change.language');
 
 Route::get('/kayıt-ol',function(){
     return view("register");
+})->name('register');
+Route::get('/giriş-yap',function(){
+    
+    return view("login");
 })->name('login');
 
-Route::get('/demo',function(){
-    return view("demo");
+// Footer
+Route::get('/about-us',function(){
+
+    return view('about_us');
 });
+
+Route::get('/privacy-policy',function(){
+
+    return view('privacy_policy');
+});
+
+Route::get('/kvkk',function(){
+
+    return view('kvkk');
+});
+
+Route::get('/contact',function(){
+
+    return view('contact');
+});
+
+Route::group(['middleware' => ['web']],function(){
+
+Route::get('/', function () {
+    return view('items');
+});
+
 
 // Step 1 Dosya yükleme (Pdf,img vs)
 Route::post('/uploadFiles',[HukukBasvuruController::class,'uploadFile']); 
@@ -40,17 +69,18 @@ Route::post('/upload-video',[HukukBasvuruController::class,'uploadVideo']);
 
 
 
-Route::get('/giriş-yap',function(){
-    return view("login");
-})->name('login');
 
 
-Route::post('/register',[AuthController::class,'registerPost'])->name('registerPost');
+
 Route::post('/login',[AuthController::class,'loginPost'])->name('loginPost');
 
-
+Route::post('/register',[AuthController::class,'registerPost'])->name('registerPost');
 
 Route::middleware(['auth'])->group(function(){
+
+    Route::get('/demo',function(){
+        return view("demo");
+    });
 
     Route::get('/account',function(){
         return view("userpanel.account");
@@ -87,4 +117,5 @@ Route::middleware(['auth'])->group(function(){
 });
 
 
-
+//mw end
+});

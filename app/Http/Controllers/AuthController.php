@@ -16,26 +16,28 @@ class AuthController extends Controller
             'password' => 'required|string|min:6',
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
-            'country_id' => 'required|numeric|digits:11|unique:users',
+            'country_id' => 'required|numeric|unique:users',
             'phone' => 'required|numeric|unique:users',
             'country' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'adress' => 'required|string|max:255',
+            'area' => 'required',
            ],
            [
             'email.unique' => 'Bu e-posta adresi zaten alınmış.',
             'country_id.numeric' => 'Kimlik no alanı bir sayı olmalıdır.',
-            'country_id.digits' => 'Kimlik no alanı 11 basamaklı olmalıdır.',
             'country_id.unique' => 'Bu kimlik numarası zaten alınmış.'
         ]
     );
-        
+
+    
+        $phone = $request->input('area').$request->input('phone');
        
 
         $user = new User();
         $user->name = $request->name;
         $user->surname = $request->surname;
-        $user->phone = $request->phone;
+        $user->phone = $phone;
         $user->country_id =$request->country_id;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
@@ -44,7 +46,8 @@ class AuthController extends Controller
         $user->adress = $request->adress;
     
         if ($user->save()) {
-            return redirect('/')->with('success', 'Kayıt Başarılı');
+            Auth::login($user);
+            return redirect()->intended('/')->with('success', 'Kayıt Başarılı');
         } else {
             return redirect()->back()->withErrors(['error' => 'Kayıt sırasında bir hata oluştu. Lütfen tekrar deneyin.']);
         }
@@ -54,7 +57,7 @@ class AuthController extends Controller
     {   
 
         if(auth()->check()){
-            return redirect('/demo');
+            return redirect('/account');
         }
         
         return view('login');
@@ -73,8 +76,8 @@ class AuthController extends Controller
 
         if(Auth::attempt($credetails)) {
 
-          
-                return redirect('/demo');
+                
+                return redirect()->intended('/');
        
            
         }

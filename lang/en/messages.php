@@ -41,5 +41,6 @@ danışmak isterseniz, daha uygun bir maliyetle, aşağıdaki butonlardan
 “Abone olmak istiyorum.” butonunu seçebilirsiniz. Bunun için, yalnızca 500
 Euro ücret ödersiniz. Ama 6 ay süreyle, her ay, ayda 4 saat süreyle
 telefonla danışabilirsiniz. Abonelik uygulamasıyla ilgili detayları öğrenmek
-isterseniz :click_about_subs"
+isterseniz :click_about_subs",
+'log_in' => 'Log In',
     ];

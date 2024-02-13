@@ -1,45 +1,39 @@
 <?php
-return[
-    'welcome' => 'Sein Unternehmen ist ein in Deutschland tätiges Beratungsunternehmen. Sowohl in Deutschland als auch in der Türkei
-    Gesetzliche Kürzungen, Pakete mit Bezug zu Deutschland in der Türkei, Verteilungen direkt durch ihn selbst, seine eigenen Mitarbeiter
-    Antwortet nicht über. Sortiert Ihre Fragen nach Intensität und sorgt für relevante Fachkompetenz in diesem Bereich
-    leitet Sie an Anwälte weiter. Sicherstellen, dass der Antwortbericht und die Unternehmensverteilung angemessen sind
-    Es prüft, behebt eventuelle Mängel und liefert hervorragende Informationen.',
+return [
+    'welcome' => 'Unser Unternehmen ist ein Beratungsunternehmen, das in Deutschland tätig ist. Wir beantworten Ihre rechtlichen Fragen entweder direkt in Deutschland zu Fragen im Zusammenhang mit der Türkei oder in der Türkei zu Fragen im Zusammenhang mit Deutschland nicht selbst, sondern ordnen Ihre Fragen nach Fachgebieten und leiten sie an Anwälte weiter, von deren Fachkenntnissen wir überzeugt sind. Wir überwachen den Bericht, um sicherzustellen, dass er den Unternehmensstandards entspricht, ergänzen ihn bei Bedarf und stellen sicher, dass Ihnen perfekte Informationen zur Verfügung gestellt werden.',
 
-    'main_header' => 'Beratungsstelle',
+    'main_header' => "Beratungszentrum",
 
-    'click_i_want_join' => 'konsultieren',
-    'ss_welcome' => "Sorunuzun yazılacağı kutuya gelmeden önce, sisteme dair bazı açıklamalar
-    yapmak isteriz. Daha öncesinde bu açıklamaları incelediyseniz, tekraren
-    incelemeden, ':click_i_want_join' butonuna tıklayarak, doğrudan
-    sorunuzu sormanızı sağlayacak, sonraki sayfaya geçebilirsiniz.
-    Her bir işlemin ne şekilde yapılacağı, ücreti, dikkat etmenizi gerektirir
-    hususlar ilgili bölümde ayrıntılı olarak açıklanmıştır. Eğer bu hususlara
-    vakıfsanız bu açıklamaları okumanız gerekmez. Ama sitemizi ilk kez ziyaret
-    etmekteyseniz, öncelikle açıklamaları dikkatle okumanızı öneririz.
-    Bu sistem, danışmak istediğiniz konularda, konunun uzmanları aracılığıyla
-    size detaylı rapor hazırlatılmasını sağlar. Uzmanlığı sorularınız değil, bu
-    soruların sorulacağı doğru meslek mensuplarını bilmek ve eksiksiz bir
-raporun hazırlanmasını sağlamaktır.
-Sorunuzun cevaplanması için gereken mesaiye mukabil, bir ücret ödenmesi
-gerekir.
-Konuyla ilgili olarak incelenmesini istediğiniz belgeleri, izleyen sayfalarda,
-sorunuzu yazdıktan sonra ekleyebilirsiniz.
-Bir sonraki sayfada, sorunuzu yazabilir, konuşabilir veya görüntü
-yükleyebilirsiniz. Bunları kolayca yapabilmeniz için veri girişiniz mümkün
-olabildiği kadar kolaylaştırılmıştır.
-Sorunuzun cevaplanması için katkı sağlayacağınızı düşündüğünüz tüm
-belgeleri lütfen yanınızda bulundurunuz ve ilgili yere yükleyiniz.
-Soracağınız hiçbir soru, anlatacağınız hiçbir sorun veya
-vereceğiniz/göndereceğiniz hiçbir belge, hiçbir nedenle, bu danışma
-faaliyeti dışında kullanılmaz. Bunların korunması Şirketimiz sorumluluğu ve
-ahlak anlayışı çerçevesinde, en önemli önceliklerimizdendir. Bu husustaki
-aydınlatma metnini incelemek için :click_about_enlightment
-Eğer aynı konu ile ilgili olmak şartıyla, sormak istediğiniz hususlar, uzun
-süreli olarak devam edecek gibi görünen sorunlar ise ve telefonla da
-danışmak isterseniz, daha uygun bir maliyetle, aşağıdaki butonlardan
-“Abone olmak istiyorum.” butonunu seçebilirsiniz. Bunun için, yalnızca 500
-Euro ücret ödersiniz. Ama 6 ay süreyle, her ay, ayda 4 saat süreyle
-telefonla danışabilirsiniz. Abonelik uygulamasıyla ilgili detayları öğrenmek
-isterseniz :click_about_subs"
-    ];
+    "click_i_want_join" => "beraten möchte",
+    'to_click' => 'klicken.',
+
+    'ss_welcome' => 'Willkommen.',
+    'ss_welcome_1' => "Bevor Sie zur Box kommen, in die Ihre Frage geschrieben wird, möchten wir einige Erklärungen zum System abgeben. Wenn Sie diese Erklärungen zuvor überprüft haben, klicken Sie erneut auf die Schaltfläche ':click_i_want_join', um Ihre Frage direkt zu stellen und zur nächsten Seite zu gelangen.",
+    'ss_welcome_2' => 'Jeder Vorgang wird im entsprechenden Abschnitt detailliert beschrieben, einschließlich des Vorgehens, der Gebühren und der zu beachtenden Punkte. Wenn Sie mit diesen Punkten vertraut sind, müssen Sie diese Erklärungen nicht lesen. Wenn Sie jedoch zum ersten Mal unsere Website besuchen, empfehlen wir Ihnen, die Erklärungen sorgfältig zu lesen.',
+    'ss_welcome_3' => 'Dieses System ermöglicht es Ihnen, zu Themen, zu denen Sie Fragen haben, detaillierte Berichte durch Fachleute zu erstellen. Es geht nicht um Ihre Expertise in den Fragen, sondern darum, die richtigen Fachleute zu kennen, die diese Fragen stellen werden, und sicherzustellen, dass ein vollständiger Bericht erstellt wird.',
+    'ss_welcome_4' => 'Es ist eine Gebühr zu entrichten, um Ihre Frage zu beantworten.',
+    'ss_welcome_5' => 'Sie können die Unterlagen, die Sie zur Überprüfung einreichen möchten, auf den folgenden Seiten nach dem Schreiben Ihrer Frage hinzufügen.',
+    'ss_welcome_6' => 'Auf der nächsten Seite können Sie Ihre Frage schreiben, sprechen oder ein Bild hochladen. Die Dateneingabe wurde so vereinfacht, dass Sie dies problemlos tun können.',
+    'ss_welcome_7' => 'Bitte haben Sie alle Unterlagen bereit, von denen Sie glauben, dass sie zur Beantwortung Ihrer Frage beitragen, und laden Sie sie an die entsprechende Stelle hoch.',
+
+    'ss_welcome_8' => 'Keine Frage, kein Problem, kein Dokument, das Sie erzählen oder senden möchten, wird aus irgendeinem Grund außerhalb dieser Beratungstätigkeit verwendet. Der Schutz dieser Informationen ist unsere Verantwortung und liegt im Rahmen unserer ethischen Grundsätze. Um die Datenschutzerklärung einzusehen, klicken Sie bitte auf :to_click',
+
+    'ss_welcome_9' => 'Wenn Sie Fragen haben, die im Zusammenhang mit dem gleichen Thema stehen und sich als langfristige Probleme zu entwickeln scheinen, und Sie auch telefonisch beraten werden möchten, können Sie dies mit den folgenden Schaltflächen tun, indem Sie die Schaltfläche "Ich möchte abonnieren." auswählen. Sie zahlen nur eine Gebühr von 500 Euro. Aber für einen Zeitraum von 6 Monaten können Sie 4 Stunden pro Monat telefonisch beraten werden. Wenn Sie mehr über das Abonnement erfahren möchten, klicken Sie bitte auf :to_click',
+    
+    'ss_welcome_10' => 'Nach diesen Erklärungen klicken Sie bitte auf die für Sie geeignete Schaltfläche unten.',
+
+    'subs_description' => 'Während Ihrer Abonnementzeit können Sie die Stunden, die Sie innerhalb eines Monats nicht genutzt haben, im folgenden Monat nutzen.
+    Wenn Sie innerhalb dieses Monats mehr als 4 Stunden verwenden möchten, können Sie diese aus dem Kontingent des nächsten Monats als Vorschuss verwenden.
+    Die Abonnementgebühren werden alle 6 Monate im Voraus bezahlt.
+    Die Nutzung wird Ihnen mit den Abrechnungen mitgeteilt.
+    Die maximale Nutzungsdauer beträgt 24 Stunden. Wenn diese Zeit vor Ablauf von 6 Monaten verbraucht ist, müssen Sie sich erneut anmelden.
+    Die Nutzungsdauer gilt nicht nur für Telefonate, sondern auch für alle Aktivitäten, die Zeit erfordern, wie das Erstellen eines Schreibens, eines Berichts, eines Antrags usw. Diese Nutzung wird Ihnen nach der Nutzung per E-Mail mitgeteilt.',
+
+    'log_in' => 'Anmelden',
+    'home' => 'Startseite',
+    'services' => 'Unsere Dienstleistungen',
+    'guide' => 'Leitfaden',
+    'pricing' => 'Preise',
+    'contact' => 'Kontakt',
+    'account' => 'Mein Konto',
+];
