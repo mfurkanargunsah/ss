@@ -82,37 +82,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Dosya yükleme işlemi
     const uploadFiles = async (formData) => {
-        return new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
-            
-            xhr.upload.addEventListener("progress", (event) => {
-                const progressBar = document.getElementById("progressBar");
-                const log = document.getElementById("progressText");
-    
-                if (event.lengthComputable) {
-                    progressBar.value = event.loaded;
-                    log.textContent = `Yükleniyor (${((event.loaded / event.total) * 100).toFixed(2)}%)…`;
-                }
-                else{
-                    console.warn("İlerleme durumu hesaplanamıyor.");
-                }
+        try {
+            const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+            const response = await fetch('/uploadFiles', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken,
+                },
             });
     
-            const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
-            
-            xhr.open("POST", "/uploadFiles");
-            xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken);
-            xhr.send(formData);
-            xhr.onload = () => {
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    resolve(xhr.responseText);
-                } else {
-                    reject(xhr.statusText);
-                }
-            };
-            xhr.onerror = () => reject(xhr.statusText);
-        });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+    
+            return await response.text();
+        } catch (error) {
+            console.error('Error:', error);
+            throw error;
+        }
     };
+    
 
     const sendToVController = async () => {
         if (selectedVMethod === 'vrecord') {
