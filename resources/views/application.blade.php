@@ -1,5 +1,5 @@
 
-    <!DOCTYPE html>
+    <!DOCTYPE html> <!-- v2 -->
     <html lang="en">
         @include('header')
     <head>

@@ -1,4 +1,4 @@
- //Ses Kaydı
+ //Ses Kaydı v2
  document.addEventListener('DOMContentLoaded', function () {
     var startRecordingBtn = document.getElementById('startRecording');
     var stopRecordingBtn = document.getElementById('stopRecording');
