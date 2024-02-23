@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\LanguageController;
-
+use App\Http\Controllers\UserPanelController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +21,10 @@ use App\Http\Controllers\LanguageController;
 */
 
 Route::post('/change-language', [LanguageController::class, 'changeLanguage'])->name('change.language');
+
+Route::get('/u', function(){
+    return view('uitest');
+});
 
 Route::get('/kayıt-ol',function(){
     return view("register");
@@ -55,18 +59,7 @@ Route::group(['middleware' => ['web']],function(){
 
 Route::get('/', function () {
     return view('items');
-});
-
-
-// Step 1 Dosya yükleme (Pdf,img vs)
-Route::post('/uploadFiles',[HukukBasvuruController::class,'uploadFile']); 
-// Step 2 Ses Dosyası Yükleme
-Route::post('/upload-audio',[HukukBasvuruController::class,'uploadAudio']);
-// Step 3 Video Dosyası Yükleme
-Route::post('/upload-video',[HukukBasvuruController::class,'uploadVideo']);
-
-
-
+})->name('home');
 
 
 
@@ -78,30 +71,20 @@ Route::post('/register',[AuthController::class,'registerPost'])->name('registerP
 
 Route::middleware(['auth'])->group(function(){
 
-    Route::get('/demo',function(){
-        return view("demo");
-    });
-
+    // Kullanıcı Paneli
     Route::get('/account',function(){
         return view("userpanel.account");
     });
     
-    Route::get('/admin',[AdminRequestController::class,'index']);
-    Route::get('/requests/{request}',[AdminRequestController::class,'show'])->name('requests.show');
-
-    Route::get('/download/{filename}',[AdminRequestController::class,'download'])->name('download');
-
-    //admin menuitem
-    Route::get('/admin/aktif_basvurular', [AdminNavController::class, 'active_requests'])->name('active_requests');
-
-  
-
-
-    Route::get('/demo',[HukukBasvuruController::class,'basvuru']);
+   // Tüm başvuruları görüntüleme sayfası (Kullanıcı)
+   Route::get('/account/aktif-basvurularim', [UserPanelController::class, 'myRequests'])->name('myRequests');
+   
+ 
 
 
     // SORU OLUŞTURMA AŞAMALARI
-
+       // Başvuru ekranı
+       Route::get('/application',[HukukBasvuruController::class,'basvuru']);
     // Başvuru oluşturma ve tür seçme
     Route::post('/createFirstRequest',[HukukBasvuruController::class,'createRequest']);
 
@@ -112,6 +95,31 @@ Route::middleware(['auth'])->group(function(){
 
     Route::post('/set-feedback-method',[HukukBasvuruController::class,'setFeedBackMethod']);
 
+
+    //dosya upload
+    // Step 1 Dosya yükleme (Pdf,img vs)
+Route::post('/uploadFiles',[HukukBasvuruController::class,'uploadFile']); 
+// Step 2 Ses Dosyası Yükleme
+Route::post('/upload-audio',[HukukBasvuruController::class,'uploadAudio']);
+// Step 3 Video Dosyası Yükleme
+Route::post('/upload-video',[HukukBasvuruController::class,'uploadVideo']);
+
+
+//AdminPanel
+    //Admin Anasayfa
+    Route::get('/admin',[AdminRequestController::class,'index']);
+    // Tüm başvuruları görüntüleme sayfası
+    Route::get('/requests/{request}',[AdminRequestController::class,'show'])->name('requests.show');
+    // dosyaları görüntüleme
+    Route::get('/download/{filename}',[AdminRequestController::class,'download'])->name('download');
+    //admin menuitem
+    Route::get('/admin/aktif_basvurular', [AdminNavController::class, 'active_requests'])->name('active_requests');
+//Admin Çıkış
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+// answer the question
+Route::post('/answerQuestion',[AdminRequestController::class,'answerQuestion'])->name('answer.question');
+//Delete Answer
+Route::delete('/answer/delete/{id}', [AdminRequestController::class, 'deleteAnswer'])->name('answer.delete');
 
 
 });

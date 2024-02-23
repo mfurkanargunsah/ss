@@ -4,8 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Requests;
 use App\Models\Image;
+use App\Models\Answer;
+use App\Models\AnswerFiles;
+use Auth;
+use Aws\S3\S3Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Session;
+
 class AdminRequestController extends Controller
 {
     
@@ -22,6 +28,14 @@ class AdminRequestController extends Controller
 
         $detailedRequest = Requests::findOrFail($id); 
         $files = Image::where('doc_uuid',$detailedRequest->id)->get();
+
+
+    
+        $answers = Answer::where('request_id', $id)
+        ->orderByDesc('updated_at')
+        ->get();
+
+
 
         $fileGroups = [
             'photo' => [],
@@ -53,7 +67,8 @@ class AdminRequestController extends Controller
 
         return view('adminpanel.show_request', [
             'request' => $detailedRequest,
-            'fileGroups' => $fileGroups
+            'fileGroups' => $fileGroups,
+            'answers' => $answers,
         ]);
 
     }
@@ -82,4 +97,71 @@ class AdminRequestController extends Controller
     
 
 
+    //Avukat soru cevaplama
+    public function answerQuestion(Request $request)
+    {   
+
+        $request->validate([
+            'files.*' => 'mimes:jpg,jpeg,png,pdf,doc,docx',
+        ]);
+
+        try {
+        // Formdan gelen verileri alıyoruz
+        $files = $request->file('files');
+        $userID = auth::user()->uuid;
+        $request_id = $request->input('request_id');
+        $title = $request->input('name');
+        $category = $request->input('category');
+        $message = $request->input('message');
+        
+        // Eğer dosya yüklendi ise
+        if ($request->hasFile('files') && is_array($files)) {
+            
+            foreach ($files as $file) {
+             
+            $path = $file->store("files/avukat/users/user{$userID}/documents/{$request_id}", 's3');
+   
+
+            $answerF = new AnswerFiles();
+
+            $answerF->answer_id = $request_id;
+            $answerF->creator = $userID;
+            $answerF->filename = basename($path);
+            $answerF->url = Storage::disk('s3')->url($path);
+            $answerF->save();
+            }
+          
+        }
+
+       
+        
+        Answer::create([
+            'request_id' => $request_id,
+            'title' => $title,
+            'creator' => $userID,
+            'category' => $category,
+            'message' => $message,
+        ]);
+
+
+        return redirect()->back()->with('status', 'success');
+    } catch (\Exception $e) {
+        return redirect()->back()->with('status', 'error');
+    }  
 }
+
+
+ public function deleteAnswer($id){
+
+    try {
+        $answer = Answer::findOrFail($id);
+        $answer->delete();
+        
+        return response()->json(['message' => 'Cevap başarıyla silindi']);
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Silme işlemi sırasında bir hata oluştu'], 500);
+    }
+      
+ }
+
+}   

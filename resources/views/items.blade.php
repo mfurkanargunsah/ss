@@ -44,7 +44,7 @@
             <div class="mt-4">
                 <ul class="flex flex-col md:flex-row justify-end">
                   <li class="mb-2 md:mb-0">
-                    <button class="bg-green-500 text-white px-4 py-2 rounded"><a href="/demo">DANIŞMAK İSTİYORUM</a></button>
+                    <button class="bg-green-500 text-white px-4 py-2 rounded"><a href="/application">DANIŞMAK İSTİYORUM</a></button>
                   </li>
                   <li class="mb-2 md:mb-0">
                     <button id="closeModal" class="bg-red-500 text-white px-4 py-2 rounded">DANIŞMAKTAN VAZGEÇTİM</button>

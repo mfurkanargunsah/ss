@@ -47,7 +47,7 @@
                 </svg>
                 <span class="sr-only">Toggle sidebar</span>
               </button>
-              <a href="https://flowbite.com" class="flex items-center justify-between mr-4">
+              <a href="/" class="flex items-center justify-between mr-4">
                 <img
                   src="https://flowbite.s3.amazonaws.com/logo.svg"
                   class="mr-3 h-8"
@@ -109,11 +109,13 @@
                   aria-labelledby="dropdown"
                 >
                   <li>
-                    <a
-                      href="#"
-                      class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >Çıkış Yap</a
-                    >
+                    <a href="{{ route('logout') }}" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Çıkış Yap
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
                   </li>
                 </ul>
               </div>
@@ -216,9 +218,9 @@
                 <ul id="dropdown-pages" class="hidden py-2 space-y-2">
                   <li>
                     <a
-                        href="/admin/aktif_basvurular"
+                        href="/account/aktif-basvurularim"
                       class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Aktif Başvurular</a
+                      >Aktif Başvurularım</a
                      
                     >
                   </li>
@@ -356,7 +358,8 @@
            
        
           
-            
+          @yield('basvurularim')
+          @yield('request')
     
     
           </div>

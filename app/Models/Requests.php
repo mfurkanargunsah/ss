@@ -13,6 +13,10 @@ class Requests extends Model
     public function creator(){
         return $this->belongsTo(User::class,'creator_uuid','uuid');
     }
+    public function answer()
+    {
+        return $this->belongsTo(Answer::class, 'id');
+    }
 
     use HasFactory;
 }

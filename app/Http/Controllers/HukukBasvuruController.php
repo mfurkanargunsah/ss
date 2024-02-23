@@ -18,7 +18,7 @@ class HukukBasvuruController extends Controller
 
         $user = Auth::user();
 
-        return view('demo',compact('user'));
+        return view('application',compact('user'));
     }
 
     public function createRequest(Request $request){
@@ -102,7 +102,7 @@ class HukukBasvuruController extends Controller
     public function uploadFile(Request $request){
     
         $request->validate([
-            'files.*' => 'mimes:jpg,png,pdf,doc,docx|max:2048',
+            'files.*' => 'mimes:jpg,jpeg,png,pdf,doc,docx|max:2048',
         ]);
 
  

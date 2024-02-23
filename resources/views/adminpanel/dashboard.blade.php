@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     @vite(['resources/css/app.css','resources/js/app.js'])
+   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -47,7 +48,7 @@
                 </svg>
                 <span class="sr-only">Toggle sidebar</span>
               </button>
-              <a href="https://flowbite.com" class="flex items-center justify-between mr-4">
+              <a href="/" class="flex items-center justify-between mr-4">
                 <img
                   src="https://flowbite.s3.amazonaws.com/logo.svg"
                   class="mr-3 h-8"
@@ -109,11 +110,13 @@
                   aria-labelledby="dropdown"
                 >
                   <li>
-                    <a
-                      href="#"
-                      class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >Çıkış Yap</a
-                    >
+                    <a href="{{ route('logout') }}" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Çıkış Yap
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
                   </li>
                 </ul>
               </div>

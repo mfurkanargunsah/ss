@@ -1,4 +1,5 @@
 @vite(['resources/css/app.css','resources/js/app.js'])
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <header class="bg-white fixed top-0 w-full z-50">
   <nav class="bg-white border-gray-200">
