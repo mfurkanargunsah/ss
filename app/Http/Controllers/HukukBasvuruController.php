@@ -108,8 +108,6 @@ class HukukBasvuruController extends Controller
  
         $files = $request->file('files') ?? [];
 
-        //Dosya Başına Ücret, Orn: 5 * 10TL = 50TL
-      
 
         $basvuru = Requests::where('creator_uuid',auth::user()->uuid)->latest()->first();
         $docID = $basvuru->id;
