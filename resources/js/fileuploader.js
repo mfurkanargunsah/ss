@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     const startRecordingBtn = document.getElementById('startRecording');
     const stopRecordingBtn = document.getElementById('stopRecording');
     const playRecordingBtn = document.getElementById('playRecording');
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const minutes = Math.floor(seconds / 60);
         seconds = seconds % 60;
         return pad(minutes) + ':' + pad(seconds);
-    }
+    };
 
     const pad = (num) => (num < 10 ? '0' : '') + num;
 
@@ -228,26 +228,31 @@ document.addEventListener('DOMContentLoaded', function () {
         selectedVMethod = 'vfile';
     });
 
-    document.getElementById("sendAllFiles").onclick = async () => {
+    const sendAllFiles = async () => {
         openModal();
         try {
+            // Ses ve video dosyalarını yüklemek için işlemler eşzamanlı olarak gerçekleştirilir
             await Promise.all([sendToController(), sendToVController()]);
-
+            
+            // Dosya yükleme işlemi gerçekleştirilir
             const formData = new FormData();
             const files = Object.values(FILES);
-    
             files.forEach(file => {
                 formData.append("files[]", file);
             });
             formData.append("textarea", document.getElementById("textarea").value);
-    
             const response = await uploadFiles(formData);
+            
+            // Yükleme işlemi başarılıysa gerekli adımlar atılır
             closeModal();
             selectReturn();
             console.log(response); 
         } catch (error) {
+            // Hata durumunda uygun bir hata mesajı gösterilir
             console.error('Hata:', error);
             closeModal();
         }
     };
+
+    document.getElementById("sendAllFiles").onclick = sendAllFiles;
 });
