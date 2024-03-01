@@ -8,7 +8,7 @@
     <title>Yönetim Paneli | Anasayfa</title>
 </head>
 <body>
-    
+
     <div class="antialiased bg-gray-50 dark:bg-gray-900">
         <nav class="bg-white border-b border-gray-200 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-50">
           <div class="flex flex-wrap justify-between items-center">
@@ -83,12 +83,10 @@
                 <div class="py-3 px-4">
                   <span
                     class="block text-sm font-semibold text-gray-900 dark:text-white"
-                    >Furkan Argunşah</span
-                  >
+                    >{{$user->name. ' ' . $user->surname}}</span>
                   <span
                     class="block text-sm text-gray-900 truncate dark:text-white"
-                    >mfurkanargunsah2@gmail.com</span
-                  >
+                    >{{$user->email}}</span>
                 </div>
                 <ul
                   class="py-1 text-gray-700 dark:text-gray-300"
@@ -216,6 +214,14 @@
                   </svg>
                 </button>
                 <ul id="dropdown-pages" class="hidden py-2 space-y-2">
+                  <li>
+                    <a
+                        href="/application"
+                      class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      >Yeni Başvuru</a
+                     
+                    >
+                  </li>
                   <li>
                     <a
                         href="/account/aktif-basvurularim"
@@ -355,7 +361,28 @@
             class=" rounded-lg border-gray-300 dark:border-gray-600 h-96 mb-4"
           >
           
-           
+
+<!-- Session Dialog Modal -->
+<div id="successModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+  <div class="relative w-full max-w-md mx-auto">
+    <!-- Modal content -->
+    <div class="relative bg-white rounded-lg shadow-lg">
+     
+      <div class="p-4 text-center">
+        <div class="w-12 h-12 rounded-full bg-green-100 p-2 flex items-center justify-center mx-auto mb-3.5">
+          <svg aria-hidden="true" class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+          <span class="sr-only">Success</span>
+        </div>
+        <p id="successMessage" class="mb-4 text-lg font-semibold text-gray-900"></p>
+        <button data-modal-toggle="successModal" id="successButton" type="button" class="py-2 px-3 text-sm font-medium text-center text-white rounded-lg bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300">
+          Tamam
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+            
        
           
           @yield('basvurularim')
@@ -369,7 +396,47 @@
       </div>
     
 
-      
+      <script>
+     
+     document.addEventListener('DOMContentLoaded', function () {
+    var successModal = document.getElementById('successModal');
+    var successMessage = document.getElementById('successMessage');
+
+    // Modalı açan buton
+    var openModalButton = document.getElementById('successButton');
+
+    // Modalı kapatma işlevi
+    function closeModal() {
+      successModal.classList.add('hidden');
+    }
+
+    // Modalı açma işlevi
+    function openModal(message) {
+      successMessage.textContent = message;
+      successModal.classList.remove('hidden');
+    }
+
+    // Modal dışına tıklanınca modalı kapatma
+    successModal.addEventListener('click', function (event) {
+      if (event.target === successModal) {
+        closeModal();
+      }
+    });
+
+    // Tamam butonuna basıldığında modalı kapatma
+    openModalButton.addEventListener('click', function () {
+      closeModal();
+    });
+
+    // Sessiondan gelen mesajı modal içine yazdırma
+    var sessionMessage = "<?php echo session('success'); ?>";
+    if (sessionMessage) {
+      openModal(sessionMessage);
+    }
+  });
+
+
+        </script>
     
 </body>
 </html>

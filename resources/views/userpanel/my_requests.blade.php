@@ -1,14 +1,12 @@
 @extends('userpanel.account')
 @section('basvurularim')
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
                     No
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Başvuran Adı
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Başvuru Tipi
@@ -29,12 +27,11 @@
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                    {{ $request->id }}
                 </th>
-                <td class="px-6 py-4">
-                  {{ $request->creator->name }}
-                </td>
+
                 <td class="px-6 py-4">
                   {{ $request->type }}
                 </td>
+             
                 <td class="px-6 py-4">
                   {{ $request->status }}
                 </td>
@@ -44,7 +41,7 @@
                 </td>
   
                 <td class="px-6 py-4">
-                    <a href="{{ route('requests.show', $request) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Görüntüle</a>
+                    <a href="{{ route('myrequests.show', $request) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Görüntüle</a>
                 </td>
             </tr>
           @endforeach

@@ -9,6 +9,7 @@
         "blade-ui-kit/blade-ui-kit": "^0.4.0",
         "google/cloud-speech": "^1.15",
         "guzzlehttp/guzzle": "^7.2",
+        "iyzico/iyzipay-php": "^2.0",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",

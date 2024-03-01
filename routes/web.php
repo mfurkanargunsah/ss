@@ -3,12 +3,12 @@
 use App\Http\Controllers\AdminNavController;
 use App\Http\Controllers\AdminRequestController;
 use App\Http\Controllers\HukukBasvuruController;
-use App\Http\Middleware\SetPreferredLanguage;
+use App\Http\Controllers\RandevuController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use Illuminate\Http\Request;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\UserPanelController;
+use App\Http\Controllers\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,9 +22,6 @@ use App\Http\Controllers\UserPanelController;
 
 Route::post('/change-language', [LanguageController::class, 'changeLanguage'])->name('change.language');
 
-Route::get('/u', function(){
-    return view('uitest');
-});
 
 Route::get('/kayıt-ol',function(){
     return view("register");
@@ -33,6 +30,7 @@ Route::get('/giriş-yap',function(){
     
     return view("login");
 })->name('login');
+
 
 // Footer
 Route::get('/about-us',function(){
@@ -71,57 +69,106 @@ Route::post('/register',[AuthController::class,'registerPost'])->name('registerP
 
 Route::middleware(['auth'])->group(function(){
 
-    // Kullanıcı Paneli
-    Route::get('/account',function(){
-        return view("userpanel.account");
-    });
+
+    //ortak routes
+
+     // Panel Router
+     Route::get('/account',[AuthController::class,'redirectToAccount']);
+    // log out
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+//ek ödeme
+Route::post('/add-new-document',[UserPanelController::class,'addNewDocument'])->name('addNewDocuments');
+Route::get('/payment/doc/{sepet_id}',[PaymentController::class,'payment'])->name('docpayment');
+
     
+    // GENELLİKLE KULLANICILARIN ERİŞECEĞİ ROUTELAR
+           
    // Tüm başvuruları görüntüleme sayfası (Kullanıcı)
    Route::get('/account/aktif-basvurularim', [UserPanelController::class, 'myRequests'])->name('myRequests');
    
- 
+     // dosyaları görüntüleme
+     Route::get('/download/{filename}',[AdminRequestController::class,'download'])->name('download');
 
 
-    // SORU OLUŞTURMA AŞAMALARI
-       // Başvuru ekranı
-       Route::get('/application',[HukukBasvuruController::class,'basvuru']);
-    // Başvuru oluşturma ve tür seçme
-    Route::post('/createFirstRequest',[HukukBasvuruController::class,'createRequest']);
 
-    // Soru tipini gönderme
-    Route::post('/sendRequestTypes',[HukukBasvuruController::class,'sendTypes']);
+   // SORU OLUŞTURMA AŞAMALARI
+ // Başvuru ekranı
+ Route::get('/application',[HukukBasvuruController::class,'basvuru']);
+ // Başvuru oluşturma ve tür seçme
+ Route::post('/createFirstRequest',[HukukBasvuruController::class,'createRequest']);
 
-    // Geri Dönüş Tipini Gönderme
-
-    Route::post('/set-feedback-method',[HukukBasvuruController::class,'setFeedBackMethod']);
+  // Şirket verilerini kayıt etme
+Route::post('/send-information-data',[HukukBasvuruController::class,'saveInformation'])->name('saveCompanyInformation');
 
 
-    //dosya upload
-    // Step 1 Dosya yükleme (Pdf,img vs)
+ // Soru tipini gönderme
+ Route::post('/sendRequestTypes',[HukukBasvuruController::class,'sendTypes']);
+
+ // Geri Dönüş Tipini Gönderme
+
+ Route::post('/set-feedback-method',[HukukBasvuruController::class,'setFeedBackMethod']);
+
+ //ödeme sayfasına gitme
+
+ Route::get('/payment/{req_id}',[PaymentController::class,'summary'])->name('payment');
+
+ //ödeme callback
+ Route::post('/callback',[PaymentController::class,'callback'])->name('callback');
+ Route::post('/document-callback',[PaymentController::class,'docCallback'])->name('document-callback');
+
+ //Randevu Alma
+ Route::get('/u', [RandevuController::class, 'index'])->name('randevular.index');
+ Route::get('/randevular/create', [RandevuController::class, 'create'])->name('randevular.create');
+ Route::post('/randevular', [RandevuController::class, 'store'])->name('randevular.store');
+
+
+ //dosya upload
+ // Step 1 Dosya yükleme (Pdf,img vs)
 Route::post('/uploadFiles',[HukukBasvuruController::class,'uploadFile']); 
 // Step 2 Ses Dosyası Yükleme
 Route::post('/upload-audio',[HukukBasvuruController::class,'uploadAudio']);
 // Step 3 Video Dosyası Yükleme
 Route::post('/upload-video',[HukukBasvuruController::class,'uploadVideo']);
 
+        // Yetkili erişimi
+    Route::middleware(['redirect.tier:avukat'])->group(function () {
 
+
+                
+   
 //AdminPanel
     //Admin Anasayfa
-    Route::get('/admin',[AdminRequestController::class,'index']);
+    Route::get('/admin',[AdminRequestController::class,'index'])->name('adminpanel');
     // Tüm başvuruları görüntüleme sayfası
     Route::get('/requests/{request}',[AdminRequestController::class,'show'])->name('requests.show');
-    // dosyaları görüntüleme
-    Route::get('/download/{filename}',[AdminRequestController::class,'download'])->name('download');
+
     //admin menuitem
     Route::get('/admin/aktif_basvurular', [AdminNavController::class, 'active_requests'])->name('active_requests');
-//Admin Çıkış
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 // answer the question
 Route::post('/answerQuestion',[AdminRequestController::class,'answerQuestion'])->name('answer.question');
 //Delete Answer
 Route::delete('/answer/delete/{id}', [AdminRequestController::class, 'deleteAnswer'])->name('answer.delete');
 
 
+
+
+      
+    });
+
+
+    // Kullanıcı Erişimi
+    Route::middleware(['redirect.tier:user'])->group(function () {
+      
+
+ // UserPanel Route
+
+    Route::get('/my-dashboard',[UserPanelController::class,'myRequests'])->name('userpanel');
+         });
+
+             // Tüm başvuruları görüntüleme sayfası
+    Route::get('/basvuru/{request}',[UserPanelController::class,'show'])->name('myrequests.show');
 });
 
 

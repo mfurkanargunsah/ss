@@ -1,55 +1,62 @@
-@vite(['resources/css/app.css','resources/js/app.js'])
-<div class="bg-white max-w-2xl shadow overflow-hidden sm:rounded-lg">
-  <div class="px-4 py-5 sm:px-6">
-      <h3 class="text-lg leading-6 font-medium text-gray-900">
-          User database
-      </h3>
-      <p class="mt-1 max-w-2xl text-sm text-gray-500">
-          Details and informations about user.
-      </p>
-  </div>
-  <div class="border-t border-gray-200">
-      <dl>
-          <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">
-                  Full name
-              </dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  Mickael Poulaz
-              </dd>
-          </div>
-          <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">
-                  Best techno
-              </dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  React JS
-              </dd>
-          </div>
-          <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">
-                  Email address
-              </dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  m.poul@example.com
-              </dd>
-          </div>
-          <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">
-                  Salary
-              </dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  $10,000
-              </dd>
-          </div>
-          <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">
-                  About
-              </dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  To get social media testimonials like these, keep your customers engaged with your social media accounts by posting regularly yourself
-              </dd>
-          </div>
-      </dl>
-  </div>
-</div>
+@vite(['resources/css/app.css','resources/js/app.js','resources/js/fileuploader.js'])
+@include('header')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body class="bg-gray-100 flex justify-center items-center h-screen">
+    <div class=" mx-auto">
+        <div class="max-w-md bg-white p-8 rounded-lg shadow-md">
+            <h1 class="text-3xl font-semibold mb-6 text-center">Randevu Oluştur</h1>
+            <form action="{{ route('randevular.store') }}" method="POST">
+                @csrf
+                <div class="mb-4">
+                    <label for="tarih" class="block text-gray-700">Tarih:</label>
+                    <input type="date" id="tarih" name="tarih"  required class="mt-1 p-2 border rounded-md w-full">
+                </div>
+                <div class="mb-4">
+                    <label for="baslangic_saati" class="block text-gray-700">Başlangıç Saati:</label>
+                    <select id="baslangic_saati" name="baslangic_saati" required class="mt-1 p-2 border rounded-md w-full">
+                        @for ($i = 9; $i < 18; $i++)
+                            @for ($j = 0; $j < 60; $j+=10)
+                                <option value="{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}:{{ str_pad($j, 2, '0', STR_PAD_LEFT) }}">{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}:{{ str_pad($j, 2, '0', STR_PAD_LEFT) }}</option>
+                            @endfor
+                        @endfor
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="bitis_saati" class="block text-gray-700">Bitiş Saati:</label>
+                    <select id="bitis_saati" name="bitis_saati" required class="mt-1 p-2 border rounded-md w-full">
+                        <!-- Başlangıç saatinin seçildiği değeri alıp sadece bu saatten sonraki saatleri göster -->
+                    </select>
+                </div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 w-full">Kaydet</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Başlangıç saati değiştiğinde, bitiş saati seçeneklerini güncelleyin
+        document.getElementById('baslangic_saati').addEventListener('change', function() {
+            var baslangicSaati = this.value;
+            var bitisSaatiSelect = document.getElementById('bitis_saati');
+            var selectedHour = parseInt(baslangicSaati.split(':')[0]);
+            bitisSaatiSelect.innerHTML = '';
+            for (var i = selectedHour; i < 18; i++) { // 18:00'den sonrası için seçenek oluşturmayın
+                for (var j = 0; j < 60; j += 10) {
+                    if ((i > selectedHour || j > parseInt(baslangicSaati.split(':')[1])) && !(i === 17 && j === 50)) {
+                        var option = document.createElement('option');
+                        option.text = ('0' + i).slice(-2) + ':' + ('0' + j).slice(-2);
+                        option.value = ('0' + i).slice(-2) + ':' + ('0' + j).slice(-2);
+                        bitisSaatiSelect.add(option);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

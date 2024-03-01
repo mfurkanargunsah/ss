@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Requests;
 use App\Models\Image;
 use App\Models\Answer;
 use App\Models\AnswerFiles;
+use App\Models\User;
 use Auth;
 use Aws\S3\S3Client;
 use Illuminate\Http\Request;
@@ -18,18 +20,20 @@ class AdminRequestController extends Controller
 
     public function index(){
         $requests = Requests::with('creator')->orderBy('id', 'desc')->paginate(20);
+        $user = Auth::user();
 
 
-        return view("adminpanel.dashboard",compact('requests')); 
+        return view("adminpanel.dashboard",compact('requests','user')); 
     }
 
     public function show($id){
 
-
+       
         $detailedRequest = Requests::findOrFail($id); 
         $files = Image::where('doc_uuid',$detailedRequest->id)->get();
-
-
+        $user = User::where('uuid',$detailedRequest->creator_uuid)->first();
+        $company = Company::where('auth_user',$detailedRequest->creator_uuid)->first();
+        $authFile = $company->auth_document;
     
         $answers = Answer::where('request_id', $id)
         ->orderByDesc('updated_at')
@@ -41,7 +45,8 @@ class AdminRequestController extends Controller
             'photo' => [],
             'Video' => [],
             'Audio' => [],
-            'document' => []
+            'document' => [],
+        
         ];
 
         foreach($files as $file){
@@ -69,6 +74,8 @@ class AdminRequestController extends Controller
             'request' => $detailedRequest,
             'fileGroups' => $fileGroups,
             'answers' => $answers,
+            'user' => $user,
+            'authFile' => $authFile,
         ]);
 
     }

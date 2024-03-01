@@ -42,18 +42,19 @@
 
             <!-- Modal Footer -->
             <div class="mt-4">
-                <ul class="flex flex-col md:flex-row justify-end">
-                  <li class="mb-2 md:mb-0">
-                    <button class="bg-green-500 text-white px-4 py-2 rounded"><a href="/application">DANIŞMAK İSTİYORUM</a></button>
-                  </li>
-                  <li class="mb-2 md:mb-0">
-                    <button id="closeModal" class="bg-red-500 text-white px-4 py-2 rounded">DANIŞMAKTAN VAZGEÇTİM</button>
-                  </li>
-                  <li>
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded">ABONE OLMAK İSTİYORUM</button>
-                  </li>
+                <ul class="flex flex-col justify-end">
+                    <li class="mb-2">
+                        <button class="bg-green-500 text-white px-4 py-2 rounded"><a href="/application">DANIŞMAK İSTİYORUM</a></button>
+                    </li>
+                    <li class="mb-2">
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded">ABONE OLMAK İSTİYORUM</button>
+                    </li>
+                    <li class="mb-2">
+                        <button id="closeModal" class="bg-red-500 text-white px-4 py-2 rounded">DANIŞMAKTAN VAZGEÇTİM</button>
+                    </li>
+                
                 </ul>
-              </div>
+            </div>
               
         </div>
     </div>

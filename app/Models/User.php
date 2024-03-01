@@ -50,4 +50,15 @@ class User extends Authenticatable
             $model->uuid = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
         });
     }
+
+    public function hasTier($tier){
+        return $this->tier === $tier;
+    }
+
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'uuid', 'auth_user');
+    }
+
 }

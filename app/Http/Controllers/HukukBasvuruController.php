@@ -8,6 +8,9 @@ use App\Models\Requests;
 use Auth;
 use Aws\S3\S3Client;
 use App\Models\Image;
+use App\Models\Company;
+use App\Models\Purchases;
+use App\Models\Prices;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -31,17 +34,23 @@ class HukukBasvuruController extends Controller
     
         if($request != null){
 
-            $basePrice = 270;
+            
 
             $question = new Requests;
 
             $question->creator_uuid = $user->uuid;
             $question->type = $request->type;
-            $question->price = $basePrice;
             $question->save();
+            
 
 
-
+            //Sipariş Oluştur
+            $invoiceNumber = Purchases::getNextSequence();
+            $purchase = new Purchases();
+            $purchase->invoice_no = $invoiceNumber;
+            $purchase->request_id = $question->id;
+            $purchase->user_uuid = Auth::user()->uuid;
+            $purchase->save();
 
         }else
         {
@@ -56,6 +65,9 @@ class HukukBasvuruController extends Controller
         $basvuru = Requests::where('creator_uuid', auth::user()->uuid)->latest()->first();
         $types = $request->input('type');
         
+        //Siparişe git
+        $purchase = Purchases::where('request_id',$basvuru->id)->first();
+
         // Seçilen checkbox değerlerine göre işlemler yap
         if (in_array('Text', $types)) {
             $basvuru->is_written = true;
@@ -63,39 +75,51 @@ class HukukBasvuruController extends Controller
     
         if (in_array('Voice', $types)) {
             $basvuru->is_voiced = true;
+            $purchase->voiced_price = true;
         }
     
         if (in_array('Video', $types)) {
             $basvuru->is_video = true;
+            $purchase->video_price = true;
         }  
     
         $basvuru->save();
-        
+        $purchase->save();
+
         return response()->json(['success' => true]);
     }
 
     public function setFeedBackMethod(Request $request) {
         $basvuru = Requests::where('creator_uuid', auth::user()->uuid)->latest()->first();
-    
+         //Siparişe git
+         $purchase = Purchases::where('request_id',$basvuru->id)->first();
+         $req_id = $basvuru->id;
+
         if ($basvuru) { 
             if ($request->has('type')) {
                 $types = $request->input('type');
                 foreach ($types as $type) {
                     if ($type === 'text') { 
                         $basvuru->is_return_written = true;
+                        $purchase->text_feedback_price = true;
                     } elseif ($type === 'voiced') {
                         $basvuru->is_return_called = true;
+                        $purchase->voiced_feedback_price = true;
                     } elseif ($type === 'video') {
                         $basvuru->is_return_video = true;
+                        $purchase->video_feedback_price = true;
                     }
                 }
-    
+                $purchase->save();
                 $basvuru->save();
             }
-            return response()->json(['success' => true]);
         } else {
             return response()->json(['success' => false, 'message' => 'Başvuru bulunamadı.']);
         }
+
+
+       
+        return response()->json(['success' => true, 'message' => 'Başarılı route','req_id' =>$req_id]);
     }
     
 
@@ -112,11 +136,13 @@ class HukukBasvuruController extends Controller
         $basvuru = Requests::where('creator_uuid',auth::user()->uuid)->latest()->first();
         $docID = $basvuru->id;
 
-        $oldPrice = $basvuru->price;
+         //Siparişe git
+         $purchase = Purchases::where('request_id',$basvuru->id)->first();
+
         if($files){
-        $totalAmount = count($files) * 10;
-        $newPrice = $oldPrice + $totalAmount;
-        $basvuru->price = $newPrice;
+        $totalFile = count($files);
+        $purchase->document_price = $totalFile;
+        $purchase->save();
         }
         $basvuru->question = $request->input('textarea');
         $basvuru->save();
@@ -132,6 +158,7 @@ class HukukBasvuruController extends Controller
 
             $images->author = auth::user()->uuid;
             $images->doc_uuid = $basvuru->id;
+            $images->visibility = 1; 
             $images->filename = basename($path);
             $images->url = Storage::disk('s3')->url($path);
          
@@ -171,6 +198,7 @@ class HukukBasvuruController extends Controller
             $images->doc_uuid = $basvuru->id;
             $images->filename = basename($path);
             $images->filetype = "Audio";
+            $images->visibility = 1;
             $images->url = Storage::disk('s3')->url($path);
             $images->save();
 
@@ -199,6 +227,7 @@ class HukukBasvuruController extends Controller
                 $images->doc_uuid = $basvuru->id;
                 $images->filename = $fileName;
                 $images->filetype = "Video";
+                $images->visibility = 1;
                 $images->url = Storage::disk('s3')->url($path);
                 $images->save();
         
@@ -217,5 +246,30 @@ class HukukBasvuruController extends Controller
 
     }
 
+
+    // Şirket Verilerinin Veritabanına Kayıt Edilmesi
+
+
+    public function saveInformation(Request $request){
+
+        $userID = Auth::user()->uuid;
+   
+    
+        $formData = $request->all();
+        $file = $request->file('file_input');
+        $path = $file->store("files/users/user{$userID}/company", 's3');
+        $company = new Company();
+        $company->auth_user = $userID;
+        $company->name = $request->company_name;
+        $company->phone = $request->company_mobile;
+        $company->tel = $request->company_phone;
+        $company->email = $request->company_email;
+        $company->auth_user_position = $request->auth_position;
+        $company->auth_document = basename($path);
+        $company->save();
+    
+        return response()->json(['message' => 'İşlem başarılı'], 200);
+    }
+    
 
 }

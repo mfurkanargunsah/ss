@@ -32,18 +32,21 @@ class AuthController extends Controller
 
     
         $phone = $request->input('area').$request->input('phone');
-       
+        $ipAddress = $request->ip();
 
         $user = new User();
         $user->name = $request->name;
         $user->surname = $request->surname;
         $user->phone = $phone;
+        $user->tier = "user";
         $user->country_id =$request->country_id;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->country = $request->country;
         $user->city = $request->city;
-        $user->adress = $request->adress;
+        $user->address = $request->adress;
+        $user->tel = $request->tel;
+        $user->ip_address = $ipAddress;
     
         if ($user->save()) {
             Auth::login($user);
@@ -89,5 +92,21 @@ class AuthController extends Controller
     {
         Auth::logout();
         return redirect()->route('home');
+    }
+
+
+    public function redirectToAccount()
+    {
+        $user = Auth::user();
+
+        // Kullanıcının rolüne göre doğru yönlendirmeyi yap
+        if ($user->tier === 'avukat') {
+            return redirect()->route('adminpanel');
+        } elseif ($user->tier === 'user') {
+            return redirect()->route('userpanel');
+        } else {
+          
+            return redirect('/');
+        }
     }
 }

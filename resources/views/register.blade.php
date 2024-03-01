@@ -9,23 +9,6 @@
 <body>
     @include('header')   
 
-
-    <!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
-
-
 <section class="bg-white mt-20">
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
         <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl ">KAYIT OL</h1>
@@ -81,6 +64,10 @@
             </div>
         </div>
 
+        <div>
+            <label for="tel" class="block mb-2 text-sm font-medium text-gray-900">Sabit Tel</label>
+            <input type="text" id="tel" name="tel" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="">
+        </div>
 
          <div>
             <label for="country_id" class="block mb-2 text-sm font-medium text-gray-900">Kimlik No</label>
@@ -96,6 +83,10 @@
             <input type="text" id="city" name="city" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Şehir / Eyalet" required>
         </div>
 
+        <div>
+            <label for="postcode" class="block mb-2 text-sm font-medium text-gray-900">Posta Kodu</label>
+            <input type="text" id="postcode" name="postcode" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="">
+        </div>
         
     
     </div>
