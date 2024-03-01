@@ -43,7 +43,7 @@
     @endif
     <div class="px-4 py-5 sm:px-6">
         <div class="absolute top-4 right-4">
-            @if($request->status === "Ödeme Bekleniyor")
+            @if($request->status === "Ödeme Yapılmadı")
             <button onclick="goToPayment()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded hide-on-print">
                 Ödeme Yap
             </button>
@@ -51,7 +51,7 @@
             <button onclick="printDiv('doc')" class="print-button  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hide-on-print">
                 Yazdır
             </button>
-            @if($request->status !== "Ödeme Bekleniyor")
+            @if($request->status !== "Ödeme Yapılmadı")
             <button id="actionModalButton" data-modal-target="actionModal" data-modal-toggle="actionModal"  class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                 Belge Ekle
             </button>
