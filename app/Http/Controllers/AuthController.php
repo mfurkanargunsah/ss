@@ -84,7 +84,7 @@ class AuthController extends Controller
             $user = Auth::user();
             $user->update(['last_login' => now()]);
 
-            Mail::to($request->user())->send(new WelcomeMail());
+           
                 return redirect()->intended('/');
 
            
