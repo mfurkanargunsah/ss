@@ -16,5 +16,9 @@ class AdminNavController extends Controller
         return view('adminpanel.request_list',compact('requests','user'));
     }
 
+    public function information(){
+        $user = Auth::user();
+        return view('adminpanel.admin_information',compact('user'));
+    }
   
 }

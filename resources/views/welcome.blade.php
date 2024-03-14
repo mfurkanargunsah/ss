@@ -18,6 +18,7 @@
     @yield('privacy')
     @yield('kvkk')
     @yield('contact')
+    @yield('subs')
 
    
     

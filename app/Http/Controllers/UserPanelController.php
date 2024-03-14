@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Answer;
 use App\Models\Company;
+use App\Models\Dates;
 use App\Models\Image;
 use App\Models\Purchases;
 use App\Models\Requests;
@@ -16,7 +17,7 @@ class UserPanelController extends Controller
     public function myRequests()
     {
          $user = Auth::user();
-        $userId = auth()->id(); // Aktif kullanıcının id'sini alıyoruz
+        $userId = auth()->id(); 
         $requests = Requests::where('creator_uuid', $user->uuid)
         ->orderBy('id', 'desc')
         ->with('creator')
@@ -27,6 +28,20 @@ class UserPanelController extends Controller
         return view('userpanel.my_requests', compact('requests','user'));
     }
 
+    public function showMyDates(){
+
+        $user = Auth::user();
+        $userId = auth()->id();
+        $dates = Dates::where('user_uuid', $user->uuid)
+        ->where('status','<>',0)
+        ->orderBy('id', 'desc')
+        ->paginate(20);
+        
+    
+       
+        return view('userpanel.my_dates', compact('dates','user'));
+
+    }
 
     public function show($id){
 
@@ -106,4 +121,11 @@ class UserPanelController extends Controller
         return redirect()->back()->with('status', 'error');
     }  
 }
+
+    public function information(){
+
+            $user = Auth::user();
+        return view('userpanel.user_information',compact('user'));
+    }
+
 }

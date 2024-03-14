@@ -47,7 +47,7 @@
                         <button class="bg-green-500 text-white px-4 py-2 rounded"><a href="/application">DANIŞMAK İSTİYORUM</a></button>
                     </li>
                     <li class="mb-2">
-                        <button class="bg-blue-500 text-white px-4 py-2 rounded">ABONE OLMAK İSTİYORUM</button>
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded"><a href="/abone-ol">ABONE OLMAK İSTİYORUM</a></button>
                     </li>
                     <li class="mb-2">
                         <button id="closeModal" class="bg-red-500 text-white px-4 py-2 rounded">DANIŞMAKTAN VAZGEÇTİM</button>

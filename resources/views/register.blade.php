@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Kayıt Ol</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </head>
 <body>
     @include('header')   
@@ -150,12 +152,14 @@
       </div>
   </div>
   
+
     <div class="flex items-start mb-6">
         <div class="flex items-center h-5">
         <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required>
         </div>
         <label for="remember" class="ms-2 text-sm font-medium text-gray-900"><button type="button" class="text-blue-600 hover:underline" data-modal-target="default-modal" data-modal-toggle="default-modal">Kullanım Şartları ve Koşulları</button> kabul ediyorum.</label>
     </div>
+    <div class="g-recaptcha mt-4 mb-5" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Kaydol</button>
 </form>
 @if($errors->any())

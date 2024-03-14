@@ -301,16 +301,10 @@
                   </svg>
                 </button>
                 <ul id="dropdown-authentication" class="hidden py-2 space-y-2">
+            
                   <li>
                     <a
-                      href="#"
-                      class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Şifremi Değiştir</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
+                    href="/bilgiler"
                       class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >Hesabım</a
                     >
@@ -413,7 +407,7 @@
        
              @yield('basvurular')
              @yield('request')
-            
+            @yield('password')
     
     
           </div>

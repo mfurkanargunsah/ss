@@ -15,5 +15,7 @@ class VerifyCsrfToken extends Middleware
         //
         '/callback',
         '/document-callback',
+        '/generalcallback',
+        'subscallback',
     ];
 }

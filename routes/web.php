@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\AdminNavController;
 use App\Http\Controllers\AdminRequestController;
+use App\Http\Controllers\DatesController;
 use App\Http\Controllers\HukukBasvuruController;
+use App\Http\Controllers\IyzicoController;
 use App\Http\Controllers\RandevuController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LanguageController;
@@ -118,10 +121,23 @@ Route::post('/send-information-data',[HukukBasvuruController::class,'saveInforma
  Route::post('/document-callback',[PaymentController::class,'docCallback'])->name('document-callback');
 
  //Randevu Alma
- Route::get('/u', [RandevuController::class, 'index'])->name('randevular.index');
- Route::get('/randevular/create', [RandevuController::class, 'create'])->name('randevular.create');
- Route::post('/randevular', [RandevuController::class, 'store'])->name('randevular.store');
+ Route::get('/u', [DatesController::class, 'index'])->name('randevular.index');
+ //Route::get('/randevular/create', [RandevuController::class, 'create'])->name('randevular.create');
+ Route::post('/randevular', [DatesController::class, 'store'])->name('randevular.store');
+ Route::get('/get-available-times', [DatesController::class, 'getAvailableTimes']);
+ //general paymeny sayfasına gitme
+ Route::get('/iyzico-payment/{req_id}/{invoice}',[IyzicoController::class,'summary'])->name('generalPayment');
+ Route::post('/generalcallback',[IyzicoController::class,'callback'])->name('generalcallback');
+    // Tüm randevuları görüntüleme sayfası (Kullanıcı)
+    Route::get('/account/randevularım', [UserPanelController::class, 'showMyDates'])->name('myDates');
+    // Randevu iptal
+    Route::post('/cancel-date',[DatesController::class,'cancelDate']);
 
+
+//abonelik
+//abone ol 
+Route::get('abone-ol',[SubscriptionController::class,'index']);
+Route::post('subscallback',[SubscriptionController::class,'callback']);
 
  //dosya upload
  // Step 1 Dosya yükleme (Pdf,img vs)
@@ -131,12 +147,22 @@ Route::post('/upload-audio',[HukukBasvuruController::class,'uploadAudio']);
 // Step 3 Video Dosyası Yükleme
 Route::post('/upload-video',[HukukBasvuruController::class,'uploadVideo']);
 
+//Şifre değiştirme
+
+Route::get('/bilgilerim',[UserPanelController::class,'information'])->name('information');
+
+Route::post('/update-information',[AuthController::class,'updateInformation'])->name('update.profile');
+
         // Yetkili erişimi
     Route::middleware(['redirect.tier:avukat'])->group(function () {
 
 
                 
-   
+   //Şifre değiştirme
+
+Route::get('/bilgiler',[AdminNavController::class,'information'])->name('information');
+
+Route::post('/update-information',[AuthController::class,'updateInformation'])->name('update.profile');
 //AdminPanel
     //Admin Anasayfa
     Route::get('/admin',[AdminRequestController::class,'index'])->name('adminpanel');
