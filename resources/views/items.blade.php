@@ -44,13 +44,13 @@
             <div class="mt-4">
                 <ul class="flex flex-col justify-end">
                     <li class="mb-2">
-                        <button class="bg-green-500 text-white px-4 py-2 rounded"><a href="/application">DANIŞMAK İSTİYORUM</a></button>
+                        <button class="bg-green-500 text-white px-4 py-2 rounded"><a href="/application">{{ __('messages.danismak_istiyorum') }}</a></button>
                     </li>
                     <li class="mb-2">
-                        <button class="bg-blue-500 text-white px-4 py-2 rounded"><a href="/abone-ol">ABONE OLMAK İSTİYORUM</a></button>
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded"><a href="/abone-ol">{{ __('messages.abone_olmak') }}</a></button>
                     </li>
                     <li class="mb-2">
-                        <button id="closeModal" class="bg-red-500 text-white px-4 py-2 rounded">DANIŞMAKTAN VAZGEÇTİM</button>
+                        <button id="closeModal" class="bg-red-500 text-white px-4 py-2 rounded">{{ __('messages.vazgectim') }}</button>
                     </li>
                 
                 </ul>
@@ -94,11 +94,14 @@
 </div>
  <!-- subs end -->
 
-<div class="container mx-auto min-h-screen flex justify-center items-center">
+<div class="container mx-auto min-h-screen mt-8 mb-8  flex justify-center items-center">
     <div class="grid md:grid-cols-2 gap-4">
  
-      <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow relative">
-        <img class="rounded-t-lg" src="https://www.eventsimschloss.de/templates/yootheme/cache/b9/schloss-innenhof-01-klein-b9c9b607.jpeg" alt="" />
+      <div class="max-w-md bg-white border border-gray-200 rounded-lg shadow relative">
+        <div class="w-90"> 
+            <img class="rounded-t-lg" src="https://www.eventsimschloss.de/templates/yootheme/cache/b9/schloss-innenhof-01-klein-b9c9b607.jpeg" alt="" />
+        </div>    
+       
         <a href="https://www.google.com/maps/dir/Current+Location/50.3391287,7.974851/Schaumburg+Castle/" target="_blank" class="relative block">
            
         
@@ -113,7 +116,7 @@
             </p>
             <p class="mb-3 font-normal text-gray-700"></p>
             <a onclick="openDetails()" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                Detaylar
+                {{ __('buttons.btn_details') }}
                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                 </svg>
@@ -122,9 +125,10 @@
     </div> 
    
     
-    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow relative">
+    <div class="max-w-md bg-white border border-gray-200 rounded-lg shadow relative">
+        <div class="w-85 h-auto"> 
         <img class="rounded-t-lg" src="https://pr1.nicelocal.biz.tr/lQdFz8MgTSR73Qg5jYwLIg/2000x1500,q85/4px-BW84_n0QJGVPszge3NRBsKw-2VcOifrJIjPYFYkOtaCZxxXQ2cm9GOMoFYL35sjgeEUpuMccRQThmjI5vKLFnvrT7v1S_FT8McxYfpqLRIECF1QkjQ" alt="" />
-        
+        </div>
         <a onclick="openMaps()" class="relative block">
           
             <div class="absolute bottom-4 right-4 text-white bg-gray-800 p-2 rounded-md">
@@ -138,7 +142,7 @@
             </a>
             <p class="mb-3 font-normal text-gray-700"></p>
             <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                Detaylar
+                {{ __('buttons.btn_details') }}
                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                 </svg>
@@ -147,7 +151,7 @@
     </div> 
        
 
-    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow relative">
+    <div class="max-w-md bg-white border border-gray-200 rounded-lg shadow relative">
         <img class="rounded-t-lg" src="https://pr1.nicelocal.biz.tr/lQdFz8MgTSR73Qg5jYwLIg/2000x1500,q85/4px-BW84_n0QJGVPszge3NRBsKw-2VcOifrJIjPYFYkOtaCZxxXQ2cm9GOMoFYL35sjgeEUpuMccRQThmjI5vKLFnvrT7v1S_FT8McxYfpqLRIECF1QkjQ" alt="" />
         
         <a onclick="openMaps()" class="relative block">
@@ -162,7 +166,7 @@
             </a>
             <p class="mb-3 font-normal text-gray-700"></p>
             <a onclick="openDetails()" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                Detaylar
+                {{ __('buttons.btn_details') }}
                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                 </svg>
@@ -170,7 +174,7 @@
         </div>
     </div> 
     
-    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow relative">
+    <div class="max-w-md bg-white border border-gray-200 rounded-lg shadow relative">
         <a href="#" onclick="event.preventDefault();"  class="relative block">
             <img class="rounded-t-lg" src="https://www.eventsimschloss.de/templates/yootheme/cache/b9/schloss-innenhof-01-klein-b9c9b607.jpeg" alt="" />
         
@@ -226,44 +230,5 @@
         });
       </script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const deButton = document.querySelector("#deButton");
-      const trButton = document.querySelector("#trButton");
-  
-      // Almanca butonuna tıklandığında
-      deButton.addEventListener("click", function() {
-          changeLanguage("de");
-      });
-  
-      // Türkçe butonuna tıklandığında
-      trButton.addEventListener("click", function() {
-          changeLanguage("tr");
-      });
-  
-      // Dil değiştirme fonksiyonu
-      function changeLanguage(language) {
-          // Ajax isteği gönder
-          fetch("/change-language", {
-              method: "POST",
-              headers: {
-                  "Content-Type": "application/json",
-                  "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-              },
-              body: JSON.stringify({ language: language })
-          })
-          .then(response => {
-              if (!response.ok) {
-                  throw new Error("Bir hata oluştu.");
-              }
-              // Sayfayı yeniden yükle
-              location.reload();
-          })
-          .catch(error => {
-              console.error("Hata:", error);
-          });
-      }
-  });
-  
-  </script>
+
 @endsection

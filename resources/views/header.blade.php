@@ -1,6 +1,10 @@
 @vite(['resources/css/app.css','resources/js/app.js'])
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+
 <header class="bg-white fixed top-0 w-full z-50">
   <nav class="bg-white border-gray-200">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -10,7 +14,7 @@
         <div class="w-20 h-20 bg-cover bg-center  overflow-hidden">
           <img src="{{ url('storage/images/ss_logo.png') }}" alt="Schloss Schaumburg Logo"  class="w-full h-full object-cover" />
         </div>
-          <span class="self-center text-2xl font-semibold whitespace-nowrap">Schloss Schaumburg</span>
+          <span class="self-center text-2xl font-semibold whitespace-nowrap">Schloss Schaumburg GmbH</span>
       </a>
       <button data-collapse-toggle="navbar-multi-level" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-multi-level" aria-expanded="false">
           <span class="sr-only">Open main menu</span>
@@ -24,11 +28,7 @@
             <a href="/" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0">{{ __('messages.home')}}</a>
           </li>
         
-          <li>
-            <a href="/guide" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">{{ __('messages.guide')}}</a>
-          </li>
-          <li>
-            <a href="/pricing" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">{{ __('messages.pricing')}}</a>
+        
           </li>
           <li>
             <a href="/contact" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">{{ __('messages.contact')}}</a>
@@ -62,4 +62,45 @@
   </nav>
   
 </header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const deButton = document.querySelector("#deButton");
+    const trButton = document.querySelector("#trButton");
+
+    // Almanca butonuna tıklandığında
+    deButton.addEventListener("click", function() {
+        changeLanguage("de");
+    });
+
+    // Türkçe butonuna tıklandığında
+    trButton.addEventListener("click", function() {
+        changeLanguage("tr");
+    });
+
+    // Dil değiştirme fonksiyonu
+    function changeLanguage(language) {
+        // Ajax isteği gönder
+        fetch("/change-language", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({ language: language })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Bir hata oluştu.");
+            }
+            // Sayfayı yeniden yükle
+            location.reload();
+        })
+        .catch(error => {
+            console.error("Hata:", error);
+        });
+    }
+});
+
+</script>
 

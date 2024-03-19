@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Dates;
 use App\Models\Payment;
 use App\Models\Prices;
+use App\Models\Subscription;
+use Auth;
 use DateInterval;
 use DateTime;
 use Illuminate\Http\Request;
@@ -47,24 +49,15 @@ class DatesController extends Controller
         return $timeRange;
     }
     public function store(Request $request)
-    {
+    {   
+        $user = Auth::user();
         $request->validate([
             'date' => 'required|date',
             'start_time' => 'required|date_format:H:i',
             'end_time' => 'required|date_format:H:i',
         ]);
 
-        // Çakışma kontrolü yapılacak
-        $existingDates = Dates::where('date', $request->date)
-            ->where(function ($query) use ($request) {
-                $query->whereBetween('start_time', [$request->start_time, $request->end_time])
-                    ->orWhereBetween('end_time', [$request->start_time, $request->end_time]);
-            })
-            ->get();
-
-        if ($existingDates->isNotEmpty()) {
-            return redirect()->back()->with('error', 'Bu saatler arasında başka bir randevu mevcut.');
-        }
+       
 
         // Çakışma yoksa yeni randevuyu oluştur
         $randevu = new Dates();
@@ -72,8 +65,9 @@ class DatesController extends Controller
         $randevu->date = $request->date;
         $randevu->start_time = $request->start_time;
         $randevu->end_time = $request->end_time;
-        $randevu->status = 0;
-        $randevu->save();
+   
+
+    
 
         $start_time = strtotime($request->start_time);
         $end_time = strtotime($request->end_time);
@@ -84,7 +78,42 @@ class DatesController extends Controller
 $time_diff_minutes = round(($end_time - $start_time) / 60);
 //çarpma
 $result = $time_diff_minutes * $price;
-$totalPrice = $result + $basePrice;
+$totalPrice = $result + $basePrice; 
+
+if ($user->subs && $user->subs->status === 1) {
+    $sub = Subscription::where('user_uuid', $user->uuid)->first();
+
+    if ($sub) {
+        $balance = $sub->balance;
+        // Yeni balance hesaplanıyor
+        $newBalance = $balance - $time_diff_minutes;
+        
+        // Eğer yeni balance, negatif olamazsa işlem yapılabilir
+        if ($newBalance >= 0) {
+            $sub->balance = $newBalance;
+            $sub->save();
+            $randevu->status = 1;
+            $randevu->save();
+
+            return redirect('/account/randevularım')->with('success', 'Randevu başarıyla oluşturuldu');
+        } else {
+            // Yeni balance negatif olduğu için işlem yapılamaz
+            return redirect()->back()->with('error', 'Yetersiz bakiye');
+        }
+    } else {
+        // Abonelik bulunamadı
+        $randevu->status = 0;
+        $randevu->save();   
+    }
+} else {
+    // Abonelik yok veya durumu uygun değil
+    $randevu->status = 0;
+$randevu->save();   
+
+}
+
+
+
 
         $invoiceNumber = Payment::getNextSequence();
         $payments = new Payment();

@@ -39,8 +39,9 @@
 </div>
 
 <div class="py-8 px-4 border rounded-lg mx-auto max-w-full text-center lg:py-16 lg:px-12 bg-cover bg-center">
-    <div class="bg-gray-100 bg-opacity-80 rounded-lg">
+    <div class="bg-white bg-opacity-80 rounded-lg">
         <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl">{{ __('messages.main_header') }}</h1>
+        <p class="mt-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48">{{ __('messages.welcome_h1') }}</p>
         <p class="mt-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48">{{ __('messages.welcome') }}</p>
     </div>
 </div>

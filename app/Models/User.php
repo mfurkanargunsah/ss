@@ -62,4 +62,8 @@ class User extends Authenticatable
         return $this->belongsTo(Company::class, 'uuid', 'auth_user');
     }
 
+    public function subs()
+    {
+        return $this->belongsTo(Subscription::class, 'uuid', 'user_uuid');
+    }
 }

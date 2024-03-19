@@ -20,7 +20,7 @@
                <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-blue-600 rounded-full shrink-0 dark:border-blue-500">
                    1
                </span>
-               Başvuru Türü</span>
+               {{ __('application.application_type') }}</span>
                <svg class="w-3 h-3 ms-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4"/>
                </svg>
@@ -29,7 +29,7 @@
                <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
                    2
                </span>
-               Kişisel Bilgiler <span class="hidden sm:inline-flex sm:ms-2">Info</span>
+               {{ __('application.personal_information') }} <span class="hidden sm:inline-flex sm:ms-2"></span>
                <svg class="w-3 h-3 ms-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4"/>
                </svg>
@@ -38,7 +38,7 @@
                <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
                    3
                </span>
-               Başvuru Yönteminiz
+               {{ __('application.application_options') }}
                <svg class="w-3 h-3 ms-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4"/>
                </svg>
@@ -47,7 +47,7 @@
                <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
                    4
                </span>
-              Sorunuz
+               {{ __('application.your_questions') }}
            </li>
        </ol>
     </div>
@@ -61,18 +61,18 @@
             <!-- Step 1 Form -->
             <form id="step1Form" class="mb-8">
                 <div class="text-center mb-8">
-                    <h1 class="text-2xl font-semibold">Başvuru Türü</h1>
+                    <h1 class="text-2xl font-semibold">{{ __('application.application_type') }}</h1>
                 </div>
                 <div class="flex justify-center items-center  mb-4">
                     <label for="question" class="mr-2">Lütfen başvuru türünüzü seçiniz:</label>
                     <select id="question" name="question"
                         class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500">
-                        <option value="personal">Kişisel</option>
-                        <option value="corporate">Kurumsal</option>
+                        <option value="personal">{{ __('application.personal') }}</option>
+                        <option value="corporate">{{ __('application.corp') }}</option>
                     </select>
                 </div>
                 <div class="text-center mt-8">
-                    <button type="button" onclick="nextStep()" class="bg-blue-500 text-white px-6 py-2 rounded-md">İleri</button>
+                    <button type="button" onclick="nextStep()" class="bg-blue-500 text-white px-6 py-2 rounded-md">{{ __('buttons.btn_forward') }}</button>
                 </div>
             </form>
 
@@ -82,41 +82,41 @@
             <!-- Step 2: Personal or Corporate Information Form (Initially hidden) -->
             <form id="personalForm" class="hidden">
                 <div class="text-center mb-8">
-                    <h1 class="text-2xl font-semibold">Kişisel Başvuru</h1>
+                    <h1 class="text-2xl font-semibold">{{ __('application.personal') }}</h1>
                 </div>
                     <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                         
                         <div class="w-full">
-                            <label for="name"  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ad*</label>
+                            <label for="name"  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('messages.name') }}*</label>
                             <input type="text" disabled name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" @if($user != null) value="{{$user->name}}" @endif  placeholder="Adınız" required="">
                         </div>
                         <div class="w-full">
-                            <label for="surname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Soyad*</label>
+                            <label for="surname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('messages.surname') }}*</label>
                             <input type="text" disabled name="surname" id="surname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  @if($user != null) value="{{$user->surname}}" @endif  placeholder="Soyadınız" required="">
                         </div>
                 
                     
 
                         <div class="w-full">
-                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">E-mail*</label>
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('messages.e-mail') }}*</label>
                             <input type="email" disabled name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  @if($user != null) value="{{$user->email}}" @endif   placeholder="ad@domain.com" required="">
                         </div>
                     
                         <div class="w-full">
-                            <label for="mobile" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cep Telefonu*</label>
+                            <label for="mobile" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('messages.phone') }}*</label>
                             <input type="text" disabled name="mobile" id="mobile" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  @if($user != null) value="{{$user->phone}}" @endif  placeholder="123 456 78 90" required="">
                         </div>
                         <div class="w-full">
-                            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sabit Telefon</label>
+                            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('messages.tel') }}</label>
                             <input type="text" disabled name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  @if($user != null) value="{{$user->phone}}" @endif  placeholder="123 456 78 90" required="">
                         </div>
                     </div>
                     <div class="p-4 mb-4 mt-8 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
-                        <span class="font-medium">İleri</span> butonuna tıkladığınızda, bilgilerinizin doğru olduğunu kabul etmiş sayılırsınız. Bilgileriniz hatalı ise değiştirmek için <a style="border-bottom-width:1px; border-bottom-color:#2563eb; border-bottom-style:solid;font-weight:500;" href="/account">buraya tıklayınız</a>
+                        <span class="font-medium">{{ __('buttons.btn_forward') }}</span> {{ __('application.info_1') }}<a style="border-bottom-width:1px; border-bottom-color:#2563eb; border-bottom-style:solid;font-weight:500;" href="/bilgilerim"> {{ __('application.info_1_btn') }}</a>
                       </div>
                     <div class="text-center mt-8">
-                        <button type="button" onclick="previousStep()" class="bg-gray-300 text-gray-700 px-6 py-2 rounded-md mr-2">Geri</button>
-                        <button type="button" onclick="goToChoice()" class="bg-blue-500 text-white px-6 py-2 rounded-md">İleri</button>
+                        <button type="button" onclick="previousStep()" class="bg-gray-300 text-gray-700 px-6 py-2 rounded-md mr-2">{{ __('buttons.btn_back') }}</button>
+                        <button type="button" onclick="goToChoice()" class="bg-blue-500 text-white px-6 py-2 rounded-md">{{ __('buttons.btn_forward') }}</button>
                     </div>
             </form>
 
@@ -192,14 +192,12 @@
      <div id="requestType" class="hidden bg-white text-center  mx-auto">
 
         <div class="max-w-md mx-auto text-center mt-8">
-        <h2 class="text-2xl font-bold mb-12">Sorunuzu hangi yöntemle sormak istiyorsunuz?</h2>
+        <h2 class="text-2xl font-bold mb-12">{{ __('application.page_2_tittle') }}</h2>
       
     
         <div class="p-4 text-sm text-gray-800 rounded-lg bg-gray-100 dark:bg-gray-800 dark:text-gray-300 mb-4" role="alert">
-            Danışmak istediğiniz soruyu en kolay biçimde sormanız için, seçenekler oluşturduk: dilerseniz, yazabilirsiniz.
-            Dilerseniz, konuşabilirsiniz ve sesinizi kaydedebilirsiniz. Dilerseniz, görüntülü olarak kayıt yaparak bu sayfaya
-            yükleyebilirsiniz.
-            <p>Birden fazla <p>
+            {{ __('application.page_2_info_1') }}
+    
         </div>
         <div class="flex justify-center space-x-8">
             <ul class="w-96 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-md">
@@ -207,7 +205,7 @@
                     <div class="flex items-center px-4 py-3">
                         <input id="text-checkbox" name="checkbox" type="checkbox" class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                         <label data-tooltip-target="tooltip-default-1" for="text-checkbox" class="w-full ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-                            Yazılı olarak sormak istiyorum.<button data-popover-target="popover-description" data-popover-placement="bottom-end" type="button"><svg class="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg><span class="sr-only">Show information</span></button>
+                            {{ __('application.page_2_ask_with_written') }}<button data-popover-target="popover-description" data-popover-placement="bottom-end" type="button"><svg class="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg><span class="sr-only">Show information</span></button>
                             <div data-popover id="popover-description" role="tooltip" class="absolute z-10 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400">
                                 <div class="p-3 space-y-2">
                                  
@@ -228,7 +226,7 @@
                     <div class="flex items-center px-4 py-3">
                         <input id="audio-checkbox" name="checkbox" type="checkbox" class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                         <label data-tooltip-target="tooltip-default-2" for="audio-checkbox" class="w-full ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-                            Sesli olarak sormak istiyorum.<button data-popover-target="popover-sesli-description" data-popover-placement="bottom-end" type="button"><svg class="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg><span class="sr-only">Show information</span></button>
+                            {{ __('application.page_2_ask_with_voice') }}.<button data-popover-target="popover-sesli-description" data-popover-placement="bottom-end" type="button"><svg class="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg><span class="sr-only">Show information</span></button>
                             <div data-popover id="popover-sesli-description" role="tooltip" class="absolute z-10 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400">
                                 <div class="p-3 space-y-2">
                                 
@@ -252,7 +250,7 @@
                     <div class="flex items-center px-4 py-3">
                         <input id="video-checkbox" name="checkbox" type="checkbox" class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                         <label data-tooltip-target="tooltip-default-3" for="video-checkbox" class="w-full ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-                            Görüntülü olarak sormak istiyorum.<button data-popover-target="popover-video-description" data-popover-placement="bottom-end" type="button"><svg class="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg><span class="sr-only">Show information</span></button>
+                            {{ __('application.page_2_ask_with_video') }}.<button data-popover-target="popover-video-description" data-popover-placement="bottom-end" type="button"><svg class="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg><span class="sr-only">Show information</span></button>
                             <div data-popover id="popover-video-description" role="tooltip" class="absolute z-10 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400">
                                 <div class="p-3 space-y-2">
                                 
@@ -272,10 +270,10 @@
             </ul>
         </div>
         <div class="p-4 mb-4 mt-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
-            Yukarıda yer alan her bir seçeneğin veya iki seçeneğin aynı anda veya 3 seçeneğin de aynı anda işaretlenmesi mümkündür. Böyle bir durumda, temel ücret olan 220 euroya ilaveten 2 seçenek işaretlendiğinde, ikincinin ilave ücreti ile birlikte 240, 3 seçenek de işaretlendiğinde, üçüncünün ilave ücretiyle birlikte 260 euro ödenmesi gerekecektir. Ancak sesli ve görüntülü sormanın benzer fonksiyonlara sahip olması nedeniyle, ikisinin aynı anda seçilmesinin gerekli olup olmadığının takdirini başvurucu yapmalıdır.
+            {{ __('application.page_2_info_2') }}
           </div>
         <button onclick="nextButtonClicked()" class="inline-flex items-center px-9 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200  hover:bg-primary-800">
-            İleri
+            {{ __('buttons.btn_forward') }}
         </button>
 
         </div>
@@ -283,21 +281,16 @@
         <section class="bg-white dark:bg-gray-900">
             <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
                 <div class="mr-auto place-self-center lg:col-span-7">
-                    <h1 class="max-w-4xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-xl xl:text-2xl dark:text-white">Sorunuzun bir görevlimiz tarafından yazılmasını isterseniz, bu da mümkündür.</h1>
-                    <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Bu durumda, telefonla
-                        Merkezimizi arayabilirsiniz ve sorunuz, bir görevlimiz tarafından kayıt altına alınır ve sorunuzun doğru anlaşılıp
-                        anlaşılmadığını kontrol etmeniz için e-mail ile size gönderilir veya dilerseniz size okunur ve onayınız ardından
-                        süreç devam ettirilir. Ancak bu yöntemde sorunuzu kayıt altına alan avukatın kullandığı zamana mukabil, bir
-                        ödeme yapmanız gerekecektir. Bunun için, aşağıdaki takvimden randevu oluşturabilirsiniz. O gün ve saatte, +90
-                        312 490 70 17 nolu telefonu aradığınızda, konuyu anlatacağınız bir avukat karşınızda olacaktır.</p>
+                    <h1 class="max-w-4xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-xl xl:text-2xl dark:text-white">{{ __('application.page_2_tittle_2') }}</h1>
+                    <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">{{ __('application.page_2_call_info') }}</p>
                         <button data-modal-target="static-modal" data-modal-toggle="static-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            Devamını Oku
+                            {{ __('buttons.btn_read_more') }}
                             <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                             </svg>
                             </button>
                     <a href="/u" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                       Telefonla Sormak İstiyorum
+                        {{ __('buttons.btn_ask_with_phone') }}
                     </a> 
                 </div>
                 <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
@@ -314,7 +307,7 @@
                         <!-- Modal header -->
                         <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                             <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                Sorunuzun bir görevlimiz tarafından yazılmasını isterseniz, bu da mümkündür.
+                                {{ __('application.page_2_tittle_2') }}
                             </h3>
                             <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="static-modal">
                                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -326,34 +319,14 @@
                         <!-- Modal body -->
                         <div class="p-4 md:p-5 space-y-4">
                             <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                Bu durumda, telefonla
-                                Merkezimizi arayabilirsiniz ve sorunuz, bir görevlimiz tarafından kayıt altına alınır ve sorunuzun doğru anlaşılıp
-                                anlaşılmadığını kontrol etmeniz için e-mail ile size gönderilir veya dilerseniz size okunur ve onayınız ardından
-                                süreç devam ettirilir. Ancak bu yöntemde sorunuzu kayıt altına alan avukatın kullandığı zamana mukabil, bir
-                                ödeme yapmanız gerekecektir. Bunun için, aşağıdaki takvimden randevu oluşturabilirsiniz. O gün ve saatte, +90
-                                312 490 70 17 nolu telefonu aradığınızda, konuyu anlatacağınız bir avukat karşınızda olacaktır. Bunun için
-                                rezervasyonun ardından, talep ettiğiniz zaman için belirlenen ücreti ödemiş olmanız gereklidir. Aşağıdaki
-                                takvimde işaretleyeceğiniz zamana göre belirlenecek ücret her bir dakika için 1,5 Eurodur. Rezervasyonunuz,
-                                10’ar dakikalık dilimler halinde yapılır. Anlatımınızın ne kadar sürebileceği hususuyla ilgili bir tahminde
-                                bulunarak, gerçekçi bir süre belirlemenizi öneririz. Çünkü bu süre dolduğunda, otomatik sayaç, hattı kesecektir.
-                                Hat kesildiğinde sorunuzun yazılmasını tamamlamış olmanız önemlidir. Bu yüzden, mümkünse, tahmin ettiğiniz
-                                zamandan bir 10 dakika daha fazlası için rezervasyon yapmanızı öneririz. Çünkü avukatınızın muhtemel soruları
-                                olabilir ve bunlara cevap vermek için de bir miktar zaman harcayabilirsiniz. Avukatınız, yalnızca sorunuzu
-                                yazacaktır. Size cevap verme yetkisini haiz değildir. Şirketimiz, verilecek cevaplar konusunda son derece
-                                hassastır ve bu hizmeti mükemmelen vermek amacıyla, çok tecrübeli avukatların bilgilerinden yararlanır.
-                                Sorularınızı kayıt altına alma işini genç avukatları aracılığıyla ifa etmektedir ve bu avukatların soruları cevaplama
-                                yetkileri kesinlikle yoktur.  </p>
+                                {{ __('application.page_2_call_info_modal_1') }}</p>
                             <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                Tamamen sizin rahat edeceğiniz biçimde sormanız, bizim için uygundur. Aşağıdakilerden birisini seçebileceğiniz
-                                gibi, aynı anda ikisini veya üçünü de seçebilirsiniz. Bu aşamada bir tanesini seçmiş olsanız bile daha sonra diğer
-                                yöntemleri de ilave edebilirsiniz seçebilirsiniz. Bu yüzden ilave ücret ödemeyi gerektiren seçenekler yerine yazılı
-                                soru seçeneğini kullanıp, ihtiyaç duymanız halinde daha sonra diğerlerini seçmeniz daha az ödeme yapmanız
-                                bakımından daha uygun olacaktır.  </p>
+                                {{ __('application.page_2_call_info_modal_2') }} </p>
                         </div>
                         <!-- Modal footer -->
                         <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                            <button data-modal-hide="static-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Telefonla Sormak İstiyorum</button>
-                            <button data-modal-hide="static-modal" type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Kapat</button>
+                            <button data-modal-hide="static-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{ __('buttons.btn_ask_with_phone') }}</button>
+                            <button data-modal-hide="static-modal" type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">{{ __('buttons.btn_close') }}</button>
                         </div>
                     </div>
                 </div>
@@ -371,9 +344,9 @@
          
         <div class="sm:hidden">
             <select id="tabs" class="bg-blue-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option>Açıklama</option>
-                <option>Ses Yükle</option>
-                <option>Görüntü Yükle</option>
+                <option>{{ __('application.description') }}</option>
+                <option>{{ __('application.upload_voice') }}</option>
+                <option>{{ __('application.upload_video') }}</option>
               
             </select>
         </div>
@@ -394,7 +367,7 @@
                         @csrf
                     
                         <div id="text-input" class="sm:col-span-2 hidden mb-6 mt-10" >
-                            <label for="textarea" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sorunuz</label>
+                            <label for="textarea" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('application.your_questions') }}</label>
                             <textarea id="textarea" rows="14" class="p-2.5 w-full  max-w-3xl text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Bu alana, danışmak istediklerinizi yazabilirsiniz."></textarea>
                     
                             <div class=" max-w-3xl w-max mx-auto text-center mt-8 ">
@@ -404,18 +377,10 @@
                                     <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
                                   </svg>
                                   <span class="sr-only">Info</span>
-                                  <h3 class="text-lg font-medium">Belge Yükleme</h3>
+                                  <h3 class="text-lg font-medium">{{ __('application.page_3_warning_tittle') }}</h3>
                                 </div>
                                 <div class="mt-2 mb-4 text-sm">
-                                    Bu bölümde, sorunuza ilişkin belgeleri sisteme yüklemelisiniz. Sorunuzu cevaplayabilmek için gereken
-                                    belgelerin neler olduğu hususunda bir fikrinizin olmadığı bir durumda, herhangi bir belge yüklemenize gerek
-                                    yoktur; sorunuzu inceleyen avukatımız, sizinle temasa geçerek, gerekli belgeleri bildirecek ve sisteme
-                                    yüklemenizi isteyecektir. O aşamada, bu sayfaya gelerek yüklemeyi yapabilirsiniz.
-                                    Hemen yüklemeniz, incelemenizin bir an önce sonuçlanarak raporunuzun tarafınıza ulaştırılmasını
-                                    sağlayacağından, mutlaka gerekli olduğunu düşündüğünüz belgeler varsa onları yükleyiniz.
-                                    Yüklediğiniz her sayfa avukatımızın incelemesi için belirli bir zamanını alacağından, sayfa başına ilave bir ücret
-                                    doğacağını unutmayınız. Bu yüzden yalnızca gereken belgeleri yükleyiniz ve gerekli olmayanları <strong> kesinlikle </strong>
-                                    yüklemeyiniz. Bu kapsamda, gerekli olduğundan emin olmadığınız sayfaları bu aşamada yüklemeyiniz.    </div>
+                                    {{ __('application.page_3_warning_message') }}   </div>
                                 <div class="flex">
                              
                         
@@ -441,22 +406,22 @@
                 <section class="overflow-auto p-8 w-full h-full flex flex-col">
                   <header class="border-dashed border-2 border-gray-400 py-12 flex flex-col justify-center items-center">
                     <p class="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center">
-                      <span>Yüklemek istediğiniz dosyaları buraya sürükleyin</span>
+                      <span>{{ __('application.page_3_select_files') }}</span>
                     </p>
                     <input id="hidden-input" type="file" multiple class="hidden" />
                     <button id="button" type="button" class="mt-2 rounded-sm px-3 py-1 bg-gray-200 hover:bg-gray-300 focus:shadow-outline focus:outline-none">
-                      Dosya Yükle
+                        {{ __('application.page_3_upload_file') }}
                     </button>
                   </header>
         
                   <h1 class="pt-8 pb-3 font-semibold sm:text-lg text-gray-900">
-                   Seçilen Dosyalar
+                    {{ __('application.page_3_selected_files') }}
                   </h1>
         
                   <ul id="gallery" class="flex flex-1 flex-wrap -m-1"> 
                     <li id="empty" class="h-full w-full text-center flex flex-col items-center justify-center">
                       <img class="mx-auto w-32" src="https://user-images.githubusercontent.com/507615/54591670-ac0a0180-4a65-11e9-846c-e55ffce0fe7b.png" alt="no data" />
-                      <span class="text-small text-gray-500">Hiç bir dosya seçilmedi.</span>
+                      <span class="text-small text-gray-500">{{ __('application.page_3_empty_files') }}</span>
                     </li>
                   </ul>
                 </section>
@@ -666,17 +631,17 @@
                             <div class="bg-white p-5 rounded-lg">
                        
         <div role="status">
-            <p id="progressText">Lütfen bekleyin...</p>
+            <p id="progressText">Please wait...</p>
             <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
                 <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
             </svg>
-            <span class="sr-only">Dosyalarınız Yükleniyor...</span>
+            <span class="sr-only">Your files uploading...</span>
         </div>
                             </div>
         
                             <div class="bg-white p-5 rounded-lg hidden">
-                                <p id="progressText">Dosyalarınız yükleniyor. Lütfen bekleyin.</p>
+                                <p id="progressText">Please wait...</p>
                 <progress id="progressBar" value="10" max="100"></progress>
                             </div>
                           </div>
@@ -687,22 +652,22 @@
         
                           <div id="audio-input" class="sm:col-span-2 hidden mb-6">
                             <div class="text-center">
-                                <h2 class="text-2xl font-bold mb-4 mt-10">Lütfen hangi yöntem ile ses yüklemek istediğinizi seçiniz.</h2>
+                                <h2 class="text-2xl font-bold mb-4 mt-10">{{ __('application.page_3_question_tittle') }}</h2>
                                 
                                 <div class="flex justify-center space-x-4 mt-3">
                                     <div class="flex items-center border border-gray-200 rounded dark:border-gray-700 p-4">
                                         <input checked id="audio-radio-1" type="radio" value="" name="audio-radio" class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label for="audio-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Önceden kayıt ettiğim dosyayı yüklemek istiyorum</label>
+                                        <label for="audio-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ __('application.page_3_select_from_before') }}</label>
                                     </div>
                                     
                                     <div class="flex items-center border border-gray-200 rounded dark:border-gray-700 p-4">
                                         <input id="audio-radio-2" type="radio" value="" name="audio-radio" class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label for="audio-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Yeni kayıt almak istiyorum</label>
+                                        <label for="audio-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ __('application.page_3_new_record') }}</label>
                                     </div>
                                 </div>
                                 
                                 <div id="audio-upload-container" class="mt-8">
-                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="audio_input">Ses Dosyası Yükle</label>
+                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="audio_input">{{ __('application.page_3_upload_voice_file') }}</label>
                                     <input class="p-2.5 w-full max-w-lg text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="audio_input" type="file">
                                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">MP3</p>
                                 </div>
@@ -710,13 +675,13 @@
                                 <div id="audio-items" class="mt-8">
                                     <div class="space-x-4">
                                         <button id="startRecording" type="button" class="px-4 py-2 bg-blue-500 text-white rounded-full focus:outline-none">
-                                            Kaydı Başlat
+                                            {{ __('application.page_3_start_record') }}
                                         </button>
                                         <button id="stopRecording" type="button" class="px-4 py-2 bg-red-500 text-white rounded-full focus:outline-none hidden">
-                                            Durdur
+                                            {{ __('application.page_3_stop_record') }}
                                         </button>
                                         <button id="playRecording" type="button" class="px-4 py-2 bg-green-500 text-white rounded-full focus:outline-none hidden" disabled>
-                                            Dinle
+                                            {{ __('application.page_3_listen') }}
                                         </button>
                                     </div>
                                     
@@ -730,17 +695,17 @@
         
                         <div id="video-input" class="sm:col-span-2 hidden">
         
-                            <h2 class="text-xl font-bold mb-4 mt-10">Lütfen hangi yöntem ile görüntü yüklemek istediğinizi seçiniz.</h2>
+                            <h2 class="text-xl font-bold mb-4 mt-10">{{ __('application.page_3_question_tittle') }}</h2>
                         
                             <div class="flex justify-center space-x-4 mt-3">
                                 <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
                                     <input checked id="bordered-radio-1" type="radio" value="" name="bordered-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    <label for="bordered-radio-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Önceden kayıt ettiğim dosyayı yüklemek istiyorum</label>
+                                    <label for="bordered-radio-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ __('application.page_3_select_from_before') }}</label>
                                 </div>
                             
                                 <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
                                     <input  id="bordered-radio-2" type="radio" value="" name="bordered-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    <label for="bordered-radio-2" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Yeni kayıt almak istiyorum</label>
+                                    <label for="bordered-radio-2" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ __('application.page_3_new_record') }}</label>
                                 </div>
                             </div>
                             
@@ -748,9 +713,9 @@
         
         
                             <div id="file-upload-container">
-                                <label class="block mb-2 mt-10 text-sm font-medium text-gray-900 dark:text-white" for="video_input">Görüntü Dosyası Yükle</label>
+                                <label class="block mb-2 mt-10 text-sm font-medium text-gray-900 dark:text-white" for="video_input">{{ __('application.page_3_upload_video_file') }}</label>
                                 <input class="p-2.5 w-full max-w-lg text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="video_input" type="file">
-                                <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">Yalnızca MP4 ve AVI formatındaki dosyaları yükleyebilirsiniz.</p>
+                                <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">{{ __('application.page_3_upload_video_file_warning') }}</p>
                             </div>
                             
         
@@ -760,8 +725,8 @@
                                 <div id="videoSizeMessage" class="hidden mt-4">
                                     Kaydedilen video boyutu: <span id="videoSize"></span> MB
                                 </div>
-                                <button type="button" id="startVRecording" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline-green active:bg-green-800 transition duration-300">Kaydı Başlat</button>
-                                <button type="button" id="stopVRecording" class="hidden bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline-red active:bg-red-800 transition duration-300">Durdur</button>
+                                <button type="button" id="startVRecording" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline-green active:bg-green-800 transition duration-300">{{ __('application.page_3_start_record') }}</button>
+                                <button type="button" id="stopVRecording" class="hidden bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline-red active:bg-red-800 transition duration-300">{{ __('application.page_3_stop_record') }}</button>
                             </div>
                         
                         </div>

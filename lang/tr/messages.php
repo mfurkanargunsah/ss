@@ -1,10 +1,19 @@
 <?php
 return[
-    'welcome' => 'Şirketimiz, Almanya’da faaliyet gösteren bir danışmanlık şirketidir. Gerek Almanya’da Türkiye ile ilgili
-    Hukuki sorularınızı, gerekse Türkiye’de Almanya ile ilgili sorularınızı doğrudan kendisi, kendi personeli
-    aracılığıyla cevaplamaz. Sorularınızı alanlarına göre tasnif eder ve o konuyla ilgili uzmanlığından emin
-    olduğu avukatlara yönlendirir. Cevabi raporun, Şirket standartlarına uygun bir şekilde olmasını
-    denetler, varsa eksikliklerini tamamlatır ve size mükemmel bir bilgi verilmesini sağlar.',
+
+    'welcome_h1' => 'Şirketimiz, Almanya’da faaliyet gösteren bir organizasyon ve personel temini
+
+    şirketidir.',
+    'welcome' => 'Almanya’da yaşayanlara, Türkiye ile ilgili ve Türkiye’de yaşaşanlara da Almanya ve
+    Avrupa’nın diğer ülkeleriyle ilgili hemen her konuyla ilgili destek hizmetleri sunar. Bu
+    süreçte, sorularınızı doğrudan kendisi, kendi personeli aracılığıyla cevaplamaz.
+    Sorularınızı alanlarına göre tasnif eder ve o konuyla ilgili uzmanlığından emin olduğu
+    iş insanlarına/meslek mensuplarına yönlendirir. Mesela hukuki bir soruyu
+    uzmanlığından emin olduğu ve en uygun ücretle çalışacağını bildiği bir avukata
+    yönlendirir. Cevabi raporun, Şirket standartlarına uygun bir şekilde olmasını denetler,
+    varsa eksikliklerini tamamlatır ve danışanına, eksiksiz ve mükemmel bir bilgi
+    
+    verilmesini sağlar.',
 
     'main_header' => "Danışma Merkezi",
 
@@ -65,7 +74,70 @@ return[
 
 
 
+    'danismak_istiyorum' => 'Danışmak İstiyorum',
+    'abone_olmak'=> 'Abone Olmak İstiyorum',
+    'vazgectim' => 'Danışmaktan Vazgeçtim',
+    'kapat' =>  'Kapat',
+
+
  
+'turkey' => 'Türkiye',
+'turkish' => 'Türkçe',
+'germany' => 'Almanya',
+'german' => 'Almanca',
+
+'bize_ulasin' => 'Bize Ulaşın',
+'contact_text' => 'Yaşadığınız sorun ya da görüş hakkında bizimle iletişime geçebilirsiniz. Ekibimiz en kısa sürede size ulaşacaktır.',
+
+'have_account' => 'Hesabınız var mı?',
+
+'havent_account' => 'Hesabınız yok mu?',
+
+
+
+'e-mail' => 'E-posta',
+'subject' => 'Konu',
+'your_message' => 'Mesajınız',
+'password' => 'Şifre',
+'re-password' => 'Şifre Tekrar',
+
+
+'name' => 'Ad',
+'surname' => 'Soyad',
+'phone' => 'Tel No',
+'tel' => 'Sabit Tel',
+'nat_id' => 'TC Kimlik No',
+'country' => 'Ülke',
+'city' => 'Şehir',
+'post_code' => 'Posta Kodu',
+'address' => 'Adres',
+
+
+'terms_conditions' => 'Kullanım Şartları ve Koşulları',
+'agree' => 'kabul ediyorum',
+
+
+'side_applications' => 'Başvurular',
+'new_application' => 'Yeni Başvuru',
+'active_applications' => 'Aktif Başvurularım',
+'closed_applications' => 'Kapanmış Başvurularım',
+'dates' => 'Randevular',
+'new_dates' => 'Yeni Randevu Al',
+'my_dates' => 'Randevularım',
+'security' => 'Güvenlik',
+'my_account' => 'Hesabım',
+'logout' => 'Çıkış Yap',
+
+
+
+
+
+'st_no_payment' => 'Ödeme Yapılmadı',
+'st_waiting' => 'İşlem Bekleniyor',
+'st_success' => 'İşlem Tamamlandı',
+'st_cancel' => 'İptal Edildi',
+
+
 
 
 'log_in' => 'Giriş Yap',

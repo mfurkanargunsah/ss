@@ -223,7 +223,7 @@ class SubscriptionController extends Controller
                 $subs->user_uuid = $userId;
                 $subs->start_date = $startDate;
                 $subs->end_date = $endDate;
-                $subs->balance = 24;
+                $subs->balance = 1440;
                 $subs->status = 1;
                 $subs->save();
                 

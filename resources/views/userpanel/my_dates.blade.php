@@ -47,7 +47,7 @@
                 <td class="px-6 py-4">
                   {{ $date->end_time }}
                 </td>
-                @foreach($dates as $date)
+               
                   
                     <td class="px-6 py-4">
                         @if($date->status === 1)
@@ -60,7 +60,7 @@
                     </td>
             
           
-            @endforeach
+            
 
                   <td class="px-6 py-4">
                     {{ $date->created_at }}
