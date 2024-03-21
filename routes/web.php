@@ -56,6 +56,13 @@ Route::get('/contact',function(){
     return view('contact');
 });
 
+//İtems
+Route::get('/legal-counseling',function(){
+
+    return view('tr_law');
+});
+
+
 Route::group(['middleware' => ['web']],function(){
 
 Route::get('/', function () {
@@ -136,7 +143,7 @@ Route::post('/send-information-data',[HukukBasvuruController::class,'saveInforma
 
 //abonelik
 //abone ol 
-Route::get('abone-ol',[SubscriptionController::class,'index']);
+Route::get('subscribe',[SubscriptionController::class,'index']);
 Route::post('subscallback',[SubscriptionController::class,'callback']);
 
  //dosya upload

@@ -94,7 +94,7 @@
         </div>
 
        </div>
-    @include('footer')
+
 
     <script>
         document.getElementById("checkout").addEventListener("click", function() {

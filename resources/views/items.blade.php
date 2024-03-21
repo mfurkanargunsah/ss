@@ -92,106 +92,84 @@
         </div>
     </div>
 </div>
+
  <!-- subs end -->
-
-<div class="container mx-auto min-h-screen mt-8 mb-8  flex justify-center items-center">
-    <div class="grid md:grid-cols-2 gap-4">
- 
-      <div class="max-w-md bg-white border border-gray-200 rounded-lg shadow relative">
-        <div class="w-90"> 
-            <img class="rounded-t-lg" src="https://www.eventsimschloss.de/templates/yootheme/cache/b9/schloss-innenhof-01-klein-b9c9b607.jpeg" alt="" />
-        </div>    
-       
-        <a href="https://www.google.com/maps/dir/Current+Location/50.3391287,7.974851/Schaumburg+Castle/" target="_blank" class="relative block">
-           
-        
-            <div class="absolute bottom-4 right-4 text-white bg-gray-800 p-2 rounded-md">
-        
-                Balduinstein, Almanya
+ <div id="services" class="container mx-auto min-h-screen mt-8 flex justify-center items-center">
+    <div class="grid md:grid-cols-2 gap-6">
+        <!-- Kart 1 -->
+        <a href="/legal-counseling">
+        <div class="max-w-4xl bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden relative">
+            <div class="relative">
+                <img class="rounded-t-lg h-96 w-full object-cover" src="https://www.eventsimschloss.de/templates/yootheme/cache/b9/schloss-innenhof-01-klein-b9c9b607.jpeg" alt="" />
+                <div class="absolute inset-0 flex flex-col justify-end">
+                    <div class="p-4 bg-black bg-opacity-50 hover:bg-opacity-70">
+                        <h2 class="text-xl font-semibold mb-2 text-white">{{ __('items.for_tr_tittle') }}</h2>
+                        <p class="text-gray-300">{{ __('items.for_tr') }}</p>
+                    </div>
+                    
+                </div>
             </div>
-        </a>
-        <div class="p-5">
-            <p >
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Türkiye'deki hukuki sorunlarınız için Almanya merkezimize bekliyoruz.</h5>
-            </p>
-            <p class="mb-3 font-normal text-gray-700"></p>
-            <a onclick="openDetails()" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                {{ __('buttons.btn_details') }}
-                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                </svg>
-            </a>
-        </div>
-    </div> 
-   
-    
-    <div class="max-w-md bg-white border border-gray-200 rounded-lg shadow relative">
-        <div class="w-85 h-auto"> 
-        <img class="rounded-t-lg" src="https://pr1.nicelocal.biz.tr/lQdFz8MgTSR73Qg5jYwLIg/2000x1500,q85/4px-BW84_n0QJGVPszge3NRBsKw-2VcOifrJIjPYFYkOtaCZxxXQ2cm9GOMoFYL35sjgeEUpuMccRQThmjI5vKLFnvrT7v1S_FT8McxYfpqLRIECF1QkjQ" alt="" />
-        </div>
-        <a onclick="openMaps()" class="relative block">
-          
-            <div class="absolute bottom-4 right-4 text-white bg-gray-800 p-2 rounded-md">
-
-                Etimesgut, Türkiye
-            </div>
-        </a>
-        <div class="p-5">
-            <a href="#">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Almanya'da iş arıyorsanız için Türkiye ofisimize bekliyoruz</h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-700"></p>
-            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                {{ __('buttons.btn_details') }}
-                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                </svg>
-            </a>
-        </div>
-    </div> 
-       
-
-    <div class="max-w-md bg-white border border-gray-200 rounded-lg shadow relative">
-        <img class="rounded-t-lg" src="https://pr1.nicelocal.biz.tr/lQdFz8MgTSR73Qg5jYwLIg/2000x1500,q85/4px-BW84_n0QJGVPszge3NRBsKw-2VcOifrJIjPYFYkOtaCZxxXQ2cm9GOMoFYL35sjgeEUpuMccRQThmjI5vKLFnvrT7v1S_FT8McxYfpqLRIECF1QkjQ" alt="" />
-        
-        <a onclick="openMaps()" class="relative block">
-           
-            <div class="absolute bottom-4 right-4 text-white bg-gray-800 p-2 rounded-md">
-                Etimesgut, Türkiye
-            </div>
-        </a>
-        <div class="p-5">
-            <a href="#">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Almanya'daki hukuki sorunlarınız için Türkiye merkezimize bekliyoruz.</h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-700"></p>
-            <a onclick="openDetails()" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                {{ __('buttons.btn_details') }}
-                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                </svg>
-            </a>
-        </div>
-    </div> 
-    
-    <div class="max-w-md bg-white border border-gray-200 rounded-lg shadow relative">
-        <a href="#" onclick="event.preventDefault();"  class="relative block">
-            <img class="rounded-t-lg" src="https://www.eventsimschloss.de/templates/yootheme/cache/b9/schloss-innenhof-01-klein-b9c9b607.jpeg" alt="" />
-        
-            <div class="absolute bottom-4 right-4 text-white bg-gray-800 p-2 rounded-md">
-               
-            </div>
-        </a>
-        <div class="p-5">
-            <a href="#" onclick="event.preventDefault();" >
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Çok Yakında...</h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-700"></p>
          
         </div>
-    </div> 
+    </a>
+        
+
+        <!-- Kart 2 -->
+        <a href="/legal-counseling">
+        <div class="max-w-4xl bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden relative">
+            <div class="relative">
+                <img class="rounded-t-lg h-96 w-full object-cover" src="https://pr1.nicelocal.biz.tr/lQdFz8MgTSR73Qg5jYwLIg/2000x1500,q85/4px-BW84_n0QJGVPszge3NRBsKw-2VcOifrJIjPYFYkOtaCZxxXQ2cm9GOMoFYL35sjgeEUpuMccRQThmjI5vKLFnvrT7v1S_FT8McxYfpqLRIECF1QkjQ" alt="" />
+                <div class="absolute inset-0 flex flex-col justify-end">
+                    <div class="p-4 bg-black bg-opacity-50 hover:bg-opacity-70">
+                        <h2 class="text-xl font-semibold mb-2 text-white">{{ __('items.for_eu_tittle') }}</h2>
+                        <p class="text-gray-300">{{ __('items.for_eu') }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+        <!-- Kart 3 -->
+        <div class="max-w-4xl bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden relative">
+            <div class="relative">
+                <img class="rounded-t-lg h-96 w-full object-cover" src="https://pr1.nicelocal.biz.tr/lQdFz8MgTSR73Qg5jYwLIg/2000x1500,q85/4px-BW84_n0QJGVPszge3NRBsKw-2VcOifrJIjPYFYkOtaCZxxXQ2cm9GOMoFYL35sjgeEUpuMccRQThmjI5vKLFnvrT7v1S_FT8McxYfpqLRIECF1QkjQ" alt="" />
+                <div class="absolute inset-0 flex flex-col justify-end">
+                    <div class="p-4 bg-black bg-opacity-50 hover:bg-opacity-70">
+                        <h2 class="text-xl font-semibold mb-2 text-white">{{ __('items.job_from_eu_tittle') }}</h2>
+                        <p class="text-gray-300">{{ __('items.job_from_eu') }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Kart 4 -->
+        <div class="max-w-4xl bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden relative">
+            <div class="relative">
+                <img class="rounded-t-lg h-96 w-full object-cover" src="https://www.eventsimschloss.de/templates/yootheme/cache/b9/schloss-innenhof-01-klein-b9c9b607.jpeg" alt="" />
+                <div class="absolute inset-0 flex flex-col justify-end">
+                    <div class="p-4 bg-black bg-opacity-50 hover:bg-opacity-70">
+                        <h2 class="text-xl font-semibold mb-2 text-white">{{ __('items.made_in_germany_tittle') }}</h2>
+                        <p class="text-gray-300">{{ __('items.made_in_germany') }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+
+<section class="bg-white dark:bg-gray-900 mb-8">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+        <div class="mx-auto max-w-screen-sm text-center">
+
+            <p class="mb-6 font-light text-gray-500 dark:text-gray-400 md:text-xl">
+            {!! str_replace(':services', '<a href="#services" class="text-red-700">' . __('items.services') . '</a>', __('items.under_items')) !!}
+        </p>
+           
+        </div>
+    </div>
+</section>
+  
+
+
+
 
     <script>
         // Modal Açma

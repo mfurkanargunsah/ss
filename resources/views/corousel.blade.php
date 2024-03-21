@@ -1,7 +1,7 @@
-<div id="indicators-carousel" class="relative w-full mt-28" data-carousel="static">
+  <div id="indicators-carousel" class="relative w-full mt-28" data-carousel="static">
     
     <!-- Carousel wrapper -->
-    <div class="relative h-56 overflow-hidden  md:h-96">
+    <div class="relative overflow-hidden  md:h-96" style="height: 500px;">
          <!-- Item 1 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
             <img src="{{ url('storage/images/ss_image_1.jpg') }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
