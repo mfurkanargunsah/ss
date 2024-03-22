@@ -24,5 +24,6 @@ işlemleri en yüksek güvenilirlik, bilgi ve yaratıcılıkla yapmak üzere faa
 
     'under_items'=> 'Hizmetlerimizin kapsamı, sürekli olarak arttırılmakta ve geliştirilmekte olup güncel haliyle :services sayfasında listelenmektedir.',
     'services'=> 'hizmetlerimiz',
+    'click_for_details' => 'Detaylar için tıklayınız'
 
 ];

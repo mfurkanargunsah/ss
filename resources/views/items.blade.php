@@ -104,7 +104,7 @@
                 <div class="absolute inset-0 flex flex-col justify-end">
                     <div class="p-4 bg-black bg-opacity-50 hover:bg-opacity-70">
                         <h2 class="text-xl font-semibold mb-2 text-white">{{ __('items.for_tr_tittle') }}</h2>
-                        <p class="text-gray-300">{{ __('items.for_tr') }}</p>
+                        <p class="text-gray-300">{{ __('items.for_tr') }} <br><span class="underline font-bold">{{ __('items.click_for_details') }}</span></p>
                     </div>
                     
                 </div>
@@ -122,7 +122,7 @@
                 <div class="absolute inset-0 flex flex-col justify-end">
                     <div class="p-4 bg-black bg-opacity-50 hover:bg-opacity-70">
                         <h2 class="text-xl font-semibold mb-2 text-white">{{ __('items.for_eu_tittle') }}</h2>
-                        <p class="text-gray-300">{{ __('items.for_eu') }}</p>
+                        <p class="text-gray-300">{{ __('items.for_eu') }}<br> <span class="underline font-bold">{{ __('items.click_for_details') }}</span></p>
                     </div>
                 </div>
             </div>
@@ -135,7 +135,7 @@
                 <div class="absolute inset-0 flex flex-col justify-end">
                     <div class="p-4 bg-black bg-opacity-50 hover:bg-opacity-70">
                         <h2 class="text-xl font-semibold mb-2 text-white">{{ __('items.job_from_eu_tittle') }}</h2>
-                        <p class="text-gray-300">{{ __('items.job_from_eu') }}</p>
+                        <p class="text-gray-300">{{ __('items.job_from_eu') }} <br> <span class="underline font-bold">{{ __('items.click_for_details') }}</span></p>
                     </div>
                 </div>
             </div>
@@ -147,7 +147,7 @@
                 <div class="absolute inset-0 flex flex-col justify-end">
                     <div class="p-4 bg-black bg-opacity-50 hover:bg-opacity-70">
                         <h2 class="text-xl font-semibold mb-2 text-white">{{ __('items.made_in_germany_tittle') }}</h2>
-                        <p class="text-gray-300">{{ __('items.made_in_germany') }}</p>
+                        <p class="text-gray-300">{{ __('items.made_in_germany') }} <br> <span class="underline font-bold">{{ __('items.click_for_details') }}</span></p>
                     </div>
                 </div>
             </div>
