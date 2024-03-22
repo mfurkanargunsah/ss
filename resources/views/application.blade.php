@@ -218,7 +218,7 @@
                         </label>
                         <div class="flex-grow"></div>
                         <div class="flex items-center">
-                            <span class="text-sm text-gray-600 dark:text-gray-400 mr-1">-</span>
+                            <span class="text-sm text-red-500 dark:text-gray-400 mr-1">İlave ücret gerektirmez</span>
                         </div>
                     </div>
                 </li>
@@ -232,7 +232,7 @@
                                 
                                     <p>Bu seçenek bilgisayarınızda bir mikrofon varsa çalışır. Bilgisayarınıza bağlı bir mikrofonunuz yoksa, sesinizi bir başka yerde kaydedebilir ve bu kaydı dosya olarak burada kullanabilirsiniz.</p>
                          
-                                    <p>Bu seçenek tıklandığında, danışma ücreti olan 220 euroya ilaveten, sesinizin yazıya çevrilmesi için 30 euro daha ödenmesi gerekir. (30 euroluk bu miktar zaman içinde değiştirilmeye müsait olacaktır.)</p>
+                                    <p>Bu seçenek tıklandığında, danışma ücreti olan 220 euroya ilaveten, sesinizin yazıya çevrilmesi için {{$voice}} euro daha ödenmesi gerekir. ({{$voice}} euroluk bu miktar zaman içinde değiştirilmeye müsait olacaktır.)</p>
                                     <p>
                                         Konuşacağınız hususları öncelikle not almanız ve ardından kayda başlamanız çok yararlı olacaktır. Mümkün olduğu kadar tane tane konuşmalısınız. <strong> Aksi durumda dinlendiğinde anlaşılması zor olabilir ve tam olarak anlaşılabilmesi için size ilave sorular sorulmasını gerektirebilir. Bu da sorunuzun cevaplanmasını geciktirebilir. </strong></p>
                                    
@@ -242,7 +242,7 @@
                         </label>
                         <div class="flex-grow"></div>
                         <div class="flex items-center">
-                            <span class="text-sm text-gray-600 dark:text-gray-400 mr-1">+20€</span>
+                            <span class="text-sm text-gray-600 dark:text-gray-400 mr-1">+{{$voice}}€</span>
                         </div>
                     </div>
                 </li>
@@ -254,7 +254,7 @@
                             <div data-popover id="popover-video-description" role="tooltip" class="absolute z-10 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400">
                                 <div class="p-3 space-y-2">
                                 
-                                    <p>Bu seçenek bilgisayarınızda bir mikrofon ve kamera varsa çalışır. Bilgisayarınıza bağlı bir mikrofon ve kamera yoksa, ses ve görüntünüzü bir başka yerde kaydedebilir ve bu kaydı dosya olarak burada kullanabilirsiniz. Bu seçenek tıklandığında, danışma ücreti olan 220 euroya ilaveten, sesinizin yazıya çevrilmesi için 30 euro daha ödenmesi gerekir. (30 euroluk bu miktar zaman içinde değiştirilmeye müsait olacaktır.)</p>
+                                    <p>Bu seçenek bilgisayarınızda bir mikrofon ve kamera varsa çalışır. Bilgisayarınıza bağlı bir mikrofon ve kamera yoksa, ses ve görüntünüzü bir başka yerde kaydedebilir ve bu kaydı dosya olarak burada kullanabilirsiniz. Bu seçenek tıklandığında, danışma ücreti olan 220 euroya ilaveten, sesinizin yazıya çevrilmesi için {{$video}} euro daha ödenmesi gerekir. ({{$voice}} euroluk bu miktar zaman içinde değiştirilmeye müsait olacaktır.)</p>
                          
                                   
                                 </div>
@@ -263,7 +263,7 @@
                         </label>
                         <div class="flex-grow"></div>
                         <div class="flex items-center">
-                            <span class="text-sm text-gray-600 dark:text-gray-400 mr-1">+20€</span>
+                            <span class="text-sm text-gray-600 dark:text-gray-400 mr-1">+{{$video}}€</span>
                         </div>
                     </div>
                 </li>

@@ -17,4 +17,14 @@ return [
     'btn_continio' => 'Weitermachen',
     'btn_ok' =>'OK',
     'btn_cancel' => 'Abbrechen',
+
+    'sitemap'=> 'Sitemap',
+    'corporal'=> 'Unternehmen',
+    'turkey' => 'Türkei',
+    'germany' => 'Deutschland',     
+    'about_us'=> 'Über uns',
+'services' => 'Dienstleistungen',
+'home'=> 'Homepage',
+'contact'=> 'Kontakt',
+'account'=> 'Mein Konto',
 ];

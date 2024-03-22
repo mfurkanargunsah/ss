@@ -20,8 +20,11 @@ class HukukBasvuruController extends Controller
     public function basvuru(){
 
         $user = Auth::user();
+        $voice = Prices::where('id',2)->value('price');
+        $video = Prices::where('id',3)->value('price');
+        $call = Prices::where('id',4)->value('price');
 
-        return view('application',compact('user'));
+        return view('application',compact('user','voice','video','call'));
     }
 
     public function createRequest(Request $request){

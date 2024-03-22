@@ -25,16 +25,16 @@
 @csrf
     <div class="grid gap-6 mb-6 md:grid-cols-2">
         <div>
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Ad</label>
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Ad*</label>
             <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Adınız" required>
         </div>
         <div>
-            <label for="surname" class="block mb-2 text-sm font-medium text-gray-900">Soyad</label>
+            <label for="surname" class="block mb-2 text-sm font-medium text-gray-900">Soyad*</label>
             <input type="text" id="last_name" name="surname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Soyadınız" required>
         </div>
       
         <div>
-                <label for="last_name"  class="block mb-2 text-sm font-medium text-gray-900">Tel No</label>
+                <label for="last_name"  class="block mb-2 text-sm font-medium text-gray-900">Tel No*</label>
             <div class="relative w-full flex items-center">
             
           
@@ -73,15 +73,15 @@
 
          <div>
             <label for="country_id" class="block mb-2 text-sm font-medium text-gray-900">Kimlik No</label>
-            <input type="text" id="country_id" name="country_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="TCK" required>
+            <input type="text" id="country_id" name="country_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="TCK">
         </div>
 
         <div>
-            <label for="country" class="block mb-2 text-sm font-medium text-gray-900">Ülke</label>
+            <label for="country" class="block mb-2 text-sm font-medium text-gray-900">Ülke*</label>
             <input type="text" id="country" name="country" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Ülke" required>
         </div>
         <div>
-            <label for="city" class="block mb-2 text-sm font-medium text-gray-900">Şehir</label>
+            <label for="city" class="block mb-2 text-sm font-medium text-gray-900">Şehir*</label>
             <input type="text" id="city" name="city" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Şehir / Eyalet" required>
         </div>
 
@@ -93,21 +93,21 @@
     
     </div>
     <div class="mb-6">
-        <label for="adress" class="block mb-2 text-sm font-medium text-gray-900 ">Adres</label>
+        <label for="adress" class="block mb-2 text-sm font-medium text-gray-900 ">Adres*</label>
         <input type="text" id="adress" name="adress" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Adres" required>
     </div>
 
     
     <div class="mb-6">
-        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">E-posta</label>
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">E-posta*</label>
         <input type="email" id="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="e-posta@domain.com" required>
     </div> 
     <div class="mb-6">
-        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Şifre</label>
+        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Şifre*</label>
         <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="•••••••••" required>
     </div> 
     <div class="mb-6">
-        <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900">Şifre Tekrar</label>
+        <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900">Şifre Tekrar*</label>
         <input type="password" id="confirm_password" name="re_password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="•••••••••" required>
     </div> 
     @if(session('error'))

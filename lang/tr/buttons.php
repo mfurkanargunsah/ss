@@ -17,6 +17,20 @@ return[
 'btn_continio' => 'Devam Et',
 'btn_ok' =>'Tamam',
 'btn_cancel' => 'İptal Et',
+'btn_close' => 'Kapat',
+
+'sitemap'=> 'Site Haritası',
+'corporal'=> 'Kurumsal',
+'turkey' => 'Türkiye',
+'germany' => 'Almanya',              
+'about_us'=> 'Hakkımızda',
+'services' => 'Hizmetlerimiz',
+'home'=> 'Anasayfa',
+'contact'=> 'İletişim',
+'account'=> 'Hesabım',
+
+
+
 
 
 ];

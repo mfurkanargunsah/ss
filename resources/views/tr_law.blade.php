@@ -11,7 +11,7 @@
             </p>
            
             <p class="text-lg text-gray-700 mb-6">
-                Daha öncesinde bu açıklamaları incelediyseniz, tekraren incelemeden, <a class="text-red-500">"danışmak istiyorum"</a> butonuna tıklayarak, doğrudan sorunuzu yazabileceğiniz bir sonraki
+                Daha öncesinde bu açıklamaları incelediyseniz, tekraren incelemeden, <a href="#app" class="text-red-500">"danışmak istiyorum"</a> butonuna tıklayarak, doğrudan sorunuzu yazabileceğiniz bir sonraki
 sayfaya geçebilirsiniz.
             </p>
 
@@ -95,8 +95,8 @@ düzenlemeler yapılmıştır. Bunlardan birisi hukuki konularda soracağınız 
 
                                 <p class="text-lg text-gray-700 mb-6">Eğer aynı konu ile ilgili olmak şartıyla, sormak istediğiniz hususlar, uzun süreli
                                     olarak devam edecek gibi görünen sorunlar ise ve sıklıkla telefonla da danışmak
-                                    isterseniz, daha uygun bir maliyetle, aşağıdaki butonlardan <a href="" class="text-red-500">“Abone olmak istiyorum.”</a>
-                                    butonunu seçebilirsiniz. Bunun için, yalnızca 900 Euro ücret ödersiniz. Ama 6 ay
+                                    isterseniz, daha uygun bir maliyetle, aşağıdaki butonlardan <a href="#subscribe" class="text-red-500">“Abone olmak istiyorum.”</a>
+                                    butonunu seçebilirsiniz. Bunun için, yalnızca <span class="font-bold">{{$integerPrice}} Euro</span> ücret ödersiniz. Ama 6 ay
                                     süreyle, her ay, ayda 4 saat süreyle telefonla danışabilirsiniz. Abonelik uygulamasıyla
                                     ilgili detayları öğrenmek isterseniz <span class="text-red-500">tıklayınız.</span></p>
 
@@ -125,9 +125,9 @@ düzenlemeler yapılmıştır. Bunlardan birisi hukuki konularda soracağınız 
                                     <p class="text-lg text-gray-700 mb-6">Bu açıklamalardan sonra, aşağıdaki butonlardan size uygun olanına tıklayınız.</p>
 
                                     <div class="flex flex-col md:flex-row gap-8">
-                                        <a href="/application" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded m-2 md:m-0">Danışmak İstiyorum</a>
-                                        <a href="/u" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded m-2 md:m-0">Telefonla Sormak İstiyorum</a>
-                                        <a href="/subscribe" class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded m-2 md:m-0">Abone Olmak İstiyorum</a>
+                                        <a id="app" href="/application" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded m-2 md:m-0">Danışmak İstiyorum</a>
+                                        <a id="date" href="/u" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded m-2 md:m-0">Telefonla Sormak İstiyorum</a>
+                                        <a id="subscribe" href="/subscribe" class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded m-2 md:m-0">Abone Olmak İstiyorum</a>
                                       </div>
         </div>
     </div>

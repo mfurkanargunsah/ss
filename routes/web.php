@@ -7,6 +7,7 @@ use App\Http\Controllers\HukukBasvuruController;
 use App\Http\Controllers\IyzicoController;
 use App\Http\Controllers\RandevuController;
 use App\Http\Controllers\SubscriptionController;
+use App\Models\Prices;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LanguageController;
@@ -59,7 +60,10 @@ Route::get('/contact',function(){
 //İtems
 Route::get('/legal-counseling',function(){
 
-    return view('tr_law');
+    $price = Prices::where('id',10)->value('price');
+    $integerPrice = floor($price);
+
+    return view('tr_law',compact('integerPrice'));
 });
 
 
