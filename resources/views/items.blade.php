@@ -131,7 +131,7 @@
         <!-- Kart 3 -->
         <div class="max-w-4xl bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden relative">
             <div class="relative">
-                <img class="rounded-t-lg h-96 w-full object-cover" src={{ url('storage/images/ss3.jpg') }} alt="" />
+                <img class="rounded-t-lg h-96 w-full object-cover" src={{ url('storage/images/ss2.jpg') }} alt="" />
                 <div class="absolute inset-0 flex flex-col justify-end">
                     <div class="p-4 bg-black bg-opacity-60 hover:bg-opacity-90">
                         <h2 class="text-xl font-semibold mb-2 text-white">{{ __('items.job_from_eu_tittle') }}</h2>
