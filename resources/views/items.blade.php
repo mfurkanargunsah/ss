@@ -100,9 +100,9 @@
         <a href="/legal-counseling">
         <div class="max-w-4xl bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden relative">
             <div class="relative">
-                <img class="rounded-t-lg h-96 w-full object-cover" src="https://www.eventsimschloss.de/templates/yootheme/cache/b9/schloss-innenhof-01-klein-b9c9b607.jpeg" alt="" />
+                <img class="rounded-t-lg h-96 w-full object-cover" src={{ url('storage/images/ss1.jpg') }} alt="" />
                 <div class="absolute inset-0 flex flex-col justify-end">
-                    <div class="p-4 bg-black bg-opacity-50 hover:bg-opacity-70">
+                    <div class="p-4 bg-black bg-opacity-60  hover:bg-opacity-90">
                         <h2 class="text-xl font-semibold mb-2 text-white">{{ __('items.for_tr_tittle') }}</h2>
                         <p class="text-gray-300">{{ __('items.for_tr') }} <br><span class="underline font-bold">{{ __('items.click_for_details') }}</span></p>
                     </div>
@@ -118,9 +118,9 @@
         <a href="/legal-counseling">
         <div class="max-w-4xl bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden relative">
             <div class="relative">
-                <img class="rounded-t-lg h-96 w-full object-cover" src="https://pr1.nicelocal.biz.tr/lQdFz8MgTSR73Qg5jYwLIg/2000x1500,q85/4px-BW84_n0QJGVPszge3NRBsKw-2VcOifrJIjPYFYkOtaCZxxXQ2cm9GOMoFYL35sjgeEUpuMccRQThmjI5vKLFnvrT7v1S_FT8McxYfpqLRIECF1QkjQ" alt="" />
+                <img class="rounded-t-lg h-96 w-full object-cover" src={{ url('storage/images/ee2.jpg') }} alt="" />
                 <div class="absolute inset-0 flex flex-col justify-end">
-                    <div class="p-4 bg-black bg-opacity-50 hover:bg-opacity-70">
+                    <div class="p-4 bg-black bg-opacity-60 hover:bg-opacity-90">
                         <h2 class="text-xl font-semibold mb-2 text-white">{{ __('items.for_eu_tittle') }}</h2>
                         <p class="text-gray-300">{{ __('items.for_eu') }}<br> <span class="underline font-bold">{{ __('items.click_for_details') }}</span></p>
                     </div>
@@ -131,9 +131,9 @@
         <!-- Kart 3 -->
         <div class="max-w-4xl bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden relative">
             <div class="relative">
-                <img class="rounded-t-lg h-96 w-full object-cover" src="https://pr1.nicelocal.biz.tr/lQdFz8MgTSR73Qg5jYwLIg/2000x1500,q85/4px-BW84_n0QJGVPszge3NRBsKw-2VcOifrJIjPYFYkOtaCZxxXQ2cm9GOMoFYL35sjgeEUpuMccRQThmjI5vKLFnvrT7v1S_FT8McxYfpqLRIECF1QkjQ" alt="" />
+                <img class="rounded-t-lg h-96 w-full object-cover" src={{ url('storage/images/ss3.jpg') }} alt="" />
                 <div class="absolute inset-0 flex flex-col justify-end">
-                    <div class="p-4 bg-black bg-opacity-50 hover:bg-opacity-70">
+                    <div class="p-4 bg-black bg-opacity-60 hover:bg-opacity-90">
                         <h2 class="text-xl font-semibold mb-2 text-white">{{ __('items.job_from_eu_tittle') }}</h2>
                         <p class="text-gray-300">{{ __('items.job_from_eu') }} <br> <span class="underline font-bold">{{ __('items.click_for_details') }}</span></p>
                     </div>
@@ -143,9 +143,9 @@
         <!-- Kart 4 -->
         <div class="max-w-4xl bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden relative">
             <div class="relative">
-                <img class="rounded-t-lg h-96 w-full object-cover" src="https://www.eventsimschloss.de/templates/yootheme/cache/b9/schloss-innenhof-01-klein-b9c9b607.jpeg" alt="" />
+                <img class="rounded-t-lg h-96 w-full object-cover" src={{ url('storage/images/ee1.jpg') }} alt="" />
                 <div class="absolute inset-0 flex flex-col justify-end">
-                    <div class="p-4 bg-black bg-opacity-50 hover:bg-opacity-70">
+                    <div class="p-4 bg-black bg-opacity-60 hover:bg-opacity-90">
                         <h2 class="text-xl font-semibold mb-2 text-white">{{ __('items.made_in_germany_tittle') }}</h2>
                         <p class="text-gray-300">{{ __('items.made_in_germany') }} <br> <span class="underline font-bold">{{ __('items.click_for_details') }}</span></p>
                     </div>

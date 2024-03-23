@@ -23,4 +23,6 @@ return [
     ',
     'services'=> 'Dienstleistungsseite',
 
+    'click_for_details' => 'Klicken Sie für Details'
+
 ];
