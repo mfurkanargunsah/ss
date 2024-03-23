@@ -143,7 +143,7 @@
         <!-- Kart 4 -->
         <div class="max-w-4xl bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden relative">
             <div class="relative">
-                <img class="rounded-t-lg h-96 w-full object-cover" src={{ url('storage/images/ee1.jpg') }} alt="" />
+                <img class="rounded-t-lg h-96 w-full object-cover" src={{ url('storage/images/ee11.jpg') }} alt="" />
                 <div class="absolute inset-0 flex flex-col justify-end">
                     <div class="p-4 bg-black bg-opacity-60 hover:bg-opacity-90">
                         <h2 class="text-xl font-semibold mb-2 text-white">{{ __('items.made_in_germany_tittle') }}</h2>
